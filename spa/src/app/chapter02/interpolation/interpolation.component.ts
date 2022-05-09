@@ -9,7 +9,6 @@ import Candle from 'src/app/models/candle';
 export class InterpolationComponent implements OnInit {
 
   public title: string = 'Interpolation';
-  public date: Date = new Date('07/14/2015');
   public candles: Candle[] = [
     {
       ticker: 'IBM',
