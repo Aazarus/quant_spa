@@ -30,5 +30,4 @@ export class OneWayBindingComponent implements OnInit {
   public avgPrice(candle: Candle): number {
     return (candle.close + candle.high + candle.low + candle.open)/4;
   }
-
 }
