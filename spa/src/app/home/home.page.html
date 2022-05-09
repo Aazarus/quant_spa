@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="page">
+    <h1>Welcome to Quant Book Project</h1>
+    <h2>
+      This project provides sample code for the book of
+      <i>Practical ASP.NET Core and Angular for Quantitive Finance</i>
+    </h2>
+    <h4>
+      This page is a gateway. You can access various examples by clicking
+      corresponding links.
+    </h4>
+
+    <ul style="margin-top: 50px; list-style: none;">
+      <li>
+        <p><a [routerLink]="['/']">Quant Book Home</a></p>
+      </li>
+      <li>
+        <p>Chapter 01</p>
+        <ul>
+          <li><a [routerLink]="['/chapter01/counter']">Counter</a></li>
+          <li><a [routerLink]="['/chapter01/fetch-data']">Fetch Data</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+</ion-content>
