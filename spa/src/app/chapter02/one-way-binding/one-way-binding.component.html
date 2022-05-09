@@ -9,8 +9,36 @@
 
 <ion-content [fullscreen]="true">
   <div>
-    <p>
-      one-way-binding works!
-    </p>
+    <form class="example-form" [style.color]="getColor(avgPrice(candle))">
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Stock Trader" [value]="candle.ticker">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Date" [value]="candle.date | date: 'dd/MM/yyyy'">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Open Price" [value]="candle.open" [style.color]="getColor(candle.open)">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="High Price" [value]="candle.high" [style.color]="getColor(candle.high)">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Low Price" [value]="candle.low" [style.color]="getColor(candle.low)">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Close Price" [value]="candle.close" [style.color]="getColor(candle.close)">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Average Price" bind-value="avgPrice(candle)" bind-style.color="getColor(avgPrice(candle))">
+      </mat-form-field>
+
+    </form>
   </div>
 </ion-content>
