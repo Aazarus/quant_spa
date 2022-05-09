@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <h2>Interpolation works!</h2>
+    <ion-label>Stock Ticker: {{ticker}}</ion-label>
+
+    <mat-table [dataSource]="candles">
+
+      <ng-container matColumnDef="ticker">
+        <mat-header-cell *matHeaderCellDef>Ticker</mat-header-cell>
+        <mat-cell *matCellDef="let candle">{{candle.ticker}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+        <mat-cell *matCellDef="let candle">{{candle.date | date: 'dd/MM/yyyy'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="open">
+        <mat-header-cell *matHeaderCellDef>Open</mat-header-cell>
+        <mat-cell *matCellDef="let candle">{{candle.open}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="high">
+        <mat-header-cell *matHeaderCellDef>High</mat-header-cell>
+        <mat-cell *matCellDef="let candle">{{candle.high}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="low">
+        <mat-header-cell *matHeaderCellDef>Low</mat-header-cell>
+        <mat-cell *matCellDef="let candle">{{candle.low}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="close">
+        <mat-header-cell *matHeaderCellDef>Close</mat-header-cell>
+        <mat-cell *matCellDef="let candle">{{candle.close}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="avg">
+        <mat-header-cell *matHeaderCellDef>Average Price</mat-header-cell>
+        <mat-cell *matCellDef="let candle">{{avgPrice(candle)}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    </mat-table>
+
+  </div>
+</ion-content>

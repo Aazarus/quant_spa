@@ -22,6 +22,13 @@ export class AppComponent {
         { title: 'Counter', url: '/chapter01/counter' },
         { title: 'Weather Forecast', url: '/chapter01/fetch-data' }
       ]
+    },
+    {
+      title: 'Chapter 02',
+      children: [
+        { title: 'Interpolation', url: '/chapter02/interpolation' },
+        { title: 'One Way Binding', url: '/chapter02/one-way-binding' },
+      ]
     }
   ];
 
