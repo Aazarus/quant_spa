@@ -7,9 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CandleService } from './services/candle.service';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule, 
@@ -19,7 +22,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FlexLayoutModule,
     MaterialModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    CandleService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
