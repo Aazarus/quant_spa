@@ -1,1 +1,46 @@
 <app-header [title]="title"></app-header>
+
+<ion-content [fullscreen]="true">
+    <div>
+        <form class="example-form" [style.background-color]="bgColor">
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Stock Trader" [value]="candle.ticker">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Date" [value]="candle.date | date: 'dd/MM/yyyy'">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Open Price" [value]="candle.open"
+                    [style.color]="candleService.getColor(candle.open)">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="High Price" [value]="candle.high"
+                    [style.color]="candleService.getColor(candle.high)">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Low Price" [value]="candle.low"
+                    [style.color]="candleService.getColor(candle.low)">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Close Price" [value]="candle.close"
+                    [style.color]="candleService.getColor(candle.close)">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Average Price" bind-value="candleService.avgPrice(candle)"
+                    bind-style.color="candleService.getColor(candleService.avgPrice(candle))">
+            </mat-form-field>
+
+        </form>
+
+        <button mat-raised-button color="primary" (click)="setBackgroundColor()">
+            Change Background Color
+        </button>
+    </div>
+</ion-content>

@@ -13,7 +13,7 @@ export class EventBindingComponent implements OnInit {
 
   public candle: Candle = {
     ticker: 'IBM',
-    date: new Date('14/07/2015'),
+    date: new Date('07/14/2015'),
     close: 168.61,
     high: 169.54,
     low: 168.24,
@@ -24,4 +24,8 @@ export class EventBindingComponent implements OnInit {
   constructor(public candleService: CandleService) { }
 
   public ngOnInit(): void {}
+
+  public setBackgroundColor(): void {
+    this.bgColor = this.bgColor === 'white' ? 'grey' : 'white';
+  }
 }
