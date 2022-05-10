@@ -9,7 +9,7 @@
 
 <ion-content [fullscreen]="true">
   <div>
-    <form class="example-form" [style.color]="getColor(avgPrice(candle))">
+    <form class="example-form" [style.color]="candleService.getColor(candleService.avgPrice(candle))">
 
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Stock Trader" [value]="candle.ticker">
@@ -20,23 +20,27 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Open Price" [value]="candle.open" [style.color]="getColor(candle.open)">
+        <input matInput placeholder="Open Price" [value]="candle.open" [style.color]="candleService.getColor(candle.open)">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="High Price" [value]="candle.high" [style.color]="getColor(candle.high)">
+        <input matInput placeholder="High Price" [value]="candle.high" [style.color]="candleService.getColor(candle.high)">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Low Price" [value]="candle.low" [style.color]="getColor(candle.low)">
+        <input matInput placeholder="Low Price" [value]="candle.low" [style.color]="candleService.getColor(candle.low)">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Close Price" [value]="candle.close" [style.color]="getColor(candle.close)">
+        <input matInput placeholder="Close Price" [value]="candle.close" [style.color]="candleService.getColor(candle.close)">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Average Price" bind-value="avgPrice(candle)" bind-style.color="getColor(avgPrice(candle))">
+        <input 
+          matInput 
+          placeholder="Average Price" 
+          bind-value="candleService.avgPrice(candle)" 
+          bind-style.color="candleService.getColor(candleService.avgPrice(candle))">
       </mat-form-field>
 
     </form>

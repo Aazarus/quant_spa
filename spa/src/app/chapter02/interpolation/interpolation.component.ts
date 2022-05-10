@@ -1,3 +1,4 @@
+import { CandleService } from './../../services/candle.service';
 import { Component, OnInit } from '@angular/core';
 import Candle from 'src/app/models/candle';
 
@@ -29,11 +30,7 @@ export class InterpolationComponent implements OnInit {
   ];
   public displayedColumns = ['ticker', 'date', 'open', 'high', 'low', 'close', 'avg'];
 
-  constructor() { }
+  constructor(public candleService: CandleService) { }
 
   public ngOnInit(): void {}
-  
-  public avgPrice(candle: Candle): number {
-    return (candle.close + candle.high + candle.low + candle.open)/4;
-  }
 }

@@ -42,7 +42,7 @@
       </ng-container>
       <ng-container matColumnDef="avg">
         <mat-header-cell *matHeaderCellDef>Average Price</mat-header-cell>
-        <mat-cell *matCellDef="let candle">{{avgPrice(candle)}}</mat-cell>
+        <mat-cell *matCellDef="let candle">{{candleService.avgPrice(candle)}}</mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

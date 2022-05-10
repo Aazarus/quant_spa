@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Candle from 'src/app/models/candle';
+import { CandleService } from 'src/app/services/candle.service';
 
 @Component({
   selector: 'app-one-way-binding',
@@ -19,15 +20,7 @@ export class OneWayBindingComponent implements OnInit {
     open: 169.43
   };
 
-  constructor() { }
+  constructor(public candleService: CandleService) { }
 
   public ngOnInit(): void {}
-
-  public getColor(price: number): string {
-    return price < 169 ? 'red' : 'green';
-  }
-
-  public avgPrice(candle: Candle): number {
-    return (candle.close + candle.high + candle.low + candle.open)/4;
-  }
 }

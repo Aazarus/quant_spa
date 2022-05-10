@@ -1,12 +1,14 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import Candle from 'src/app/models/candle';
+import { CandleService } from 'src/app/services/candle.service';
 
 import { InterpolationComponent } from './interpolation.component';
 
 describe('InterpolationComponent', () => {
   let component: InterpolationComponent;
   let fixture: ComponentFixture<InterpolationComponent>;
+  let candleServiceObj: jasmine.SpyObj<CandleService>;
   let candles: Candle[] = [
     {
       ticker: 'IBM',
@@ -27,10 +29,17 @@ describe('InterpolationComponent', () => {
   ];
 
   beforeEach(waitForAsync(() => {
+    let candleServiceSpyObj = jasmine.createSpyObj('CandleService', ['']);
+
     TestBed.configureTestingModule({
       declarations: [ InterpolationComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
+      providers: [
+        { provide: CandleService, useValue: candleServiceSpyObj }
+      ]
     }).compileComponents();
+
+    candleServiceObj = TestBed.inject(CandleService) as jasmine.SpyObj<CandleService>;
 
     fixture = TestBed.createComponent(InterpolationComponent);
     component = fixture.componentInstance;
@@ -40,17 +49,5 @@ describe('InterpolationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
     expect(component.candles).toEqual(candles);
-  });
-
-  describe('avgPrice', () => {
-    it('should return the average price of a candle', () => {
-      // Arrange
-      const expected = 168.405;
-      // Act
-      const actual = component.avgPrice(candles[1]);
-
-      // Assert
-      expect(actual).toBe(expected);
-    });
   });
 });
