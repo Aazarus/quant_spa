@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,6 +8,7 @@ import { CounterComponent } from './counter/counter.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/material/material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const components = [
   CounterComponent,
@@ -23,7 +23,8 @@ const components = [
     IonicModule,
     HttpClientModule,
     Chapter01RoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SharedModule
   ],
   declarations: [
     components
