@@ -19,5 +19,5 @@ steps:
     cd spa
     npm install -g @angular/cli
     npm install
-    ng build --prod
+    ng build --configuration production
   displayName: 'npm install, test, and build'
