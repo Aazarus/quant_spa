@@ -1,4 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { MaterialModule } from 'src/material/material.module';
 import { HeaderComponent } from './header/header.component';
 
 const components = [
@@ -6,6 +9,12 @@ const components = [
 ];
 
 @NgModule({
+  imports: [
+    CommonModule,
+    MaterialModule,
+    IonicModule,
+    SharedModule
+  ],
   declarations: components,
   exports: components,
 })
