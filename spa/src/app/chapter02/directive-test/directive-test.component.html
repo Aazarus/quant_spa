@@ -21,5 +21,41 @@
         </tr>
       </tbody>
     </table>
+
+    <div>    
+      <h3>
+        Using *ngIf:
+      </h3>
+      
+      <p *ngIf="stocks.length > 3">
+        There are more than 3 stocks in the list.
+      </p>
+      
+      <p *ngIf="getStock(1).ticker == 'FB'">
+        The first stock is Facebook.
+      </p>
+      
+      <p *ngIf="getStock(1).ticker != 'FB'">
+        The first stock is not Facebook.
+      </p>
+    </div>
+
+    <div>
+      <h3>
+        Using ngSwitch:
+      </h3>
+      
+      <p>There are {{ stocks.length }} stocks in the list.</p>
+      <p [ngSwitch]="stocks.length">
+        <span *ngSwitchCase="1">There is one stock.</span>
+        <span *ngSwitchCase="3">There are 3 stocks.</span>
+        <span *ngSwitchDefault>This is the default.</span>
+      </p>
+    </div>
+
+    <div>
+      
+    </div>
+    
   </div>
 </ion-content>
