@@ -1,3 +1,4 @@
+import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { CandleService } from './../services/candle.service';
 
@@ -17,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
 const components = [
   InterpolationComponent,
   OneWayBindingComponent,
-  EventBindingComponent
+  EventBindingComponent,
+  TwoWayBindingComponent
 ];
 
 @NgModule({

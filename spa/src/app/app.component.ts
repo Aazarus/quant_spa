@@ -29,6 +29,7 @@ export class AppComponent {
         { title: 'Interpolation', url: '/chapter02/interpolation' },
         { title: 'One Way Binding', url: '/chapter02/one-way-binding' },
         { title: 'Event Binding', url: '/chapter02/event-binding' },
+        { title: 'Two Way Binding', url: '/chapter02/two-way-binding' },
       ]
     }
   ];
