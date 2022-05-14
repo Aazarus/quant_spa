@@ -72,7 +72,25 @@
         id = {{stock.id}}, ticker={{stock.ticker}}, price={{stock.price}}
       </li>
     </ul>
-    
+
+    <div class="hr"></div>
+
+    <h3>
+      Using ngClass
+    </h3>
+
+    <ul *ngFor="let stock of stocks">
+      <li [ngClass]="{
+          'class-red':stock.id == 1,
+          'class-green':stock.id == 2,
+          'class-blue':stock.id == 3,
+          'class-maroon':stock.id == 4,
+          'class-blacks':stock.id == 5
+          }">
+        id = {{stock.id}}, ticker = {{stock.ticker}}, price = {{stock.price}}
+      </li>
+    </ul>
+
     <div class="hr"></div>
 
   </div>
