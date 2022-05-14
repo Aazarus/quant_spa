@@ -1,6 +1,6 @@
+import { defaultStocks } from 'src/app/models/stock';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
 import { DirectiveTestComponent } from './directive-test.component';
 
 describe('DirectiveTestComponent', () => {
@@ -20,5 +20,22 @@ describe('DirectiveTestComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.stocks).toEqual(defaultStocks())
+  });
+
+  describe('getStock', () => {
+
+    it('', () => {
+
+      // Arrange
+      const id = component.stocks[1].id;
+      const expected = component.stocks[1];
+
+      // Act
+      const actual = component.getStock(id);
+
+      // Assert
+      expect(actual).toBe(expected);
+    });
   });
 });

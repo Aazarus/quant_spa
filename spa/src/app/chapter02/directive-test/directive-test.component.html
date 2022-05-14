@@ -3,5 +3,23 @@
 
 <ion-content [fullscreen]="true">
   <div>
+    <h3>Using *ngFor:</h3>
+
+    <table *ngIf="stocks" class="table">
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th>Price</th>
+          <th>Hold Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stock of stocks">
+          <td>{{ stock.ticker }}</td>
+          <td>{{ stock.price }}</td>
+          <td>{{ stock.holdStock }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </ion-content>

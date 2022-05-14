@@ -1,4 +1,6 @@
+import { StockService } from './../../services/stock.service';
 import { Component, OnInit } from '@angular/core';
+import Stock, { defaultStocks } from 'src/app/models/stock';
 
 @Component({
   selector: 'app-directive-test',
@@ -8,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class DirectiveTestComponent implements OnInit {
 
   public title: string = "Directive Test";
+  public stocks: Stock[];
 
-  constructor() { }
+  constructor(public stockService: StockService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.stocks = defaultStocks();
+  }
 
+  getStock(id: number): Stock {
+    return this.stocks.find(s => s.id === id);
+  }
 }
