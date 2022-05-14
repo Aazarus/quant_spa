@@ -12,8 +12,7 @@ const components = [
   imports: [
     CommonModule,
     MaterialModule,
-    IonicModule,
-    SharedModule
+    IonicModule
   ],
   declarations: components,
   exports: components,
