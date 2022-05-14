@@ -30,6 +30,7 @@ export class AppComponent {
         { title: 'One Way Binding', url: '/chapter02/one-way-binding' },
         { title: 'Event Binding', url: '/chapter02/event-binding' },
         { title: 'Two Way Binding', url: '/chapter02/two-way-binding' },
+        { title: 'Directive Test', url: '/chapter02/directive-test' },
       ]
     }
   ];

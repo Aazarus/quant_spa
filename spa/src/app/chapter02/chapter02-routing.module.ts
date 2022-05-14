@@ -1,3 +1,4 @@
+import { DirectiveTestComponent } from './directive-test/directive-test.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InterpolationComponent } from './interpolation/interpolation.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'two-way-binding',
     component: TwoWayBindingComponent
+  },
+  {
+    path: 'directive-test',
+    component: DirectiveTestComponent
   }
 ];
 
