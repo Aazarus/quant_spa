@@ -58,6 +58,22 @@
     </div>
 
     <div class="hr"></div>
+
+    <div>      
+      <p [ngStyle]="{'color':getStock(1).ticker == 'GOOG' ? 'green' : 'red'}">
+        {{getStock(1).ticker}}
+      </p>
+    </div>
+
+    <div class="hr"></div>
+
+    <ul *ngFor="let stock of stocks">
+      <li [ngStyle]="{'color':stockService.getStockColor(stock.id)}">
+        id = {{stock.id}}, ticker={{stock.ticker}}, price={{stock.price}}
+      </li>
+    </ul>
     
+    <div class="hr"></div>
+
   </div>
 </ion-content>
