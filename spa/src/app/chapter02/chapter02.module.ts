@@ -1,3 +1,4 @@
+import { StockListComponent } from './input-output/stock-list/stock-list.component';
 import { CandleService } from 'src/app/services/candle.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,7 +23,8 @@ const components = [
   EventBindingComponent,
   TwoWayBindingComponent,
   DirectiveTestComponent,
-  InputOutputComponent
+  InputOutputComponent,
+  StockListComponent
 ];
 
 @NgModule({
