@@ -13,6 +13,7 @@ import { InterpolationComponent } from './interpolation/interpolation.component'
 import { OneWayBindingComponent } from './one-way-binding/one-way-binding.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { HighlightDirective } from './highlight.directive';
 
 const components = [
   InterpolationComponent,
@@ -34,7 +35,8 @@ const components = [
     SharedModule
   ],
   declarations: [
-    components
+    components,
+    HighlightDirective
   ],
   exports: [
     components
