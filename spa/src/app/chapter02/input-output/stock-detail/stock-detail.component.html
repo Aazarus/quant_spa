@@ -1,1 +1,3 @@
-<p>{{stock.ticker}}, {{stock.price | currency: 'USD'}}</p>
+<div *ngIf="stock">
+    <p>{{stock.ticker}}, {{stock.price | currency: 'USD'}}</p>
+</div>
