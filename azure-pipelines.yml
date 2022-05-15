@@ -20,5 +20,5 @@ steps:
     npm install -g @angular/cli
     npm install
     ng build --configuration production
-    npm run test
+    npm run test:headless
   displayName: 'npm install and build'
