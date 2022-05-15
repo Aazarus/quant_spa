@@ -1,3 +1,5 @@
-<p>
-  stock-list works!
-</p>
+<ol>
+  <li *ngFor="let stock of stocks">
+    <app-stock-detail [stock]="stock" (click)="stockSelected(stock)"></app-stock-detail>
+  </li>
+</ol>

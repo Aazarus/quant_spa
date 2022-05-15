@@ -1,1 +1,18 @@
 <app-header [title]="title"></app-header>
+
+
+<ion-content [fullscreen]="true">
+  <div>
+    <app-stock-list (selected)="showStockDetails($event)">Loading Stock List...</app-stock-list>
+  </div>
+
+  <div>
+    <p *ngIf="selectedStock" style="color: red">
+      You selected stock: {{selectedStock.ticker}}, {{selectedStock.price | currency: 'USD'}}
+      <span *ngIf="selectedStock.holdStock; else elseBlock">, you hold this stock.</span>
+      <ng-template #elseBlock>
+        <span>, you do not hold this stock.</span>
+      </ng-template>
+    </p>
+  </div>
+</ion-content>

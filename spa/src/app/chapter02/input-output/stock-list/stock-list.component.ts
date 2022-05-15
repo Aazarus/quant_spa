@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import Stock, { defaultStocks } from 'src/app/models/stock';
 
 @Component({
   selector: 'app-stock-list',
@@ -7,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockListComponent implements OnInit {
 
+  public stocks: Stock[];
+  @Output() selected = new EventEmitter<Stock>();
+
   constructor() { }
 
-  ngOnInit() {}
+  public ngOnInit(): void {
+    this.stocks = defaultStocks();
+  }
 
+  public stockSelected(stock: Stock): void {
+    this.selected.emit(stock);
+  }
 }
