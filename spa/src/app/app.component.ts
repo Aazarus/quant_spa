@@ -31,6 +31,7 @@ export class AppComponent {
         { title: 'Event Binding', url: '/chapter02/event-binding' },
         { title: 'Two Way Binding', url: '/chapter02/two-way-binding' },
         { title: 'Directive Test', url: '/chapter02/directive-test' },
+        { title: 'Input Output', url: '/chapter02/input-output' },
       ]
     }
   ];

@@ -1,3 +1,4 @@
+import { InputOutputComponent } from './input-output/input-output.component';
 import { DirectiveTestComponent } from './directive-test/directive-test.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'directive-test',
     component: DirectiveTestComponent
+  },
+  {
+    path: 'input-output',
+    component: InputOutputComponent
   }
 ];
 

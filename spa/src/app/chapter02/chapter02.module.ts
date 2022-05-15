@@ -1,5 +1,3 @@
-import { DirectiveTestComponent } from './directive-test/directive-test.component';
-import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.component';
 import { CandleService } from 'src/app/services/candle.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,14 +11,18 @@ import { InterpolationComponent } from './interpolation/interpolation.component'
 import { OneWayBindingComponent } from './one-way-binding/one-way-binding.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.component';
+import { DirectiveTestComponent } from './directive-test/directive-test.component';
 import { HighlightDirective } from './highlight.directive';
+import { InputOutputComponent } from './input-output/input-output.component';
 
 const components = [
   InterpolationComponent,
   OneWayBindingComponent,
   EventBindingComponent,
   TwoWayBindingComponent,
-  DirectiveTestComponent
+  DirectiveTestComponent,
+  InputOutputComponent
 ];
 
 @NgModule({
