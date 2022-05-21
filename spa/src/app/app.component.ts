@@ -33,6 +33,12 @@ export class AppComponent {
         { title: 'Directive Test', url: '/chapter02/directive-test' },
         { title: 'Input Output', url: '/chapter02/input-output' },
       ]
+    },
+    {
+      title: 'Chapter 03',
+      children: [
+        { title: 'All Stocks', url: '/chapter03/all-stocks' },
+      ]
     }
   ];
 
