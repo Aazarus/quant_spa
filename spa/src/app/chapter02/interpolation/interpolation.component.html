@@ -1,8 +1,8 @@
 <app-header [title]="title"></app-header>
 
 <ion-content>
-  <div>
-    <mat-table [dataSource]="candles">
+  <div style="overflow-x:auto">
+    <table mat-table [dataSource]="candles">
 
       <ng-container matColumnDef="ticker">
         <mat-header-cell *matHeaderCellDef>Ticker</mat-header-cell>
@@ -41,7 +41,7 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-    </mat-table>
+    </table>
 
   </div>
 </ion-content>
