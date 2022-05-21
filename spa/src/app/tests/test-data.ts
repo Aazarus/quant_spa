@@ -9,6 +9,13 @@ export var symbolTestData: Symbol[] = [
     { ticker: "IBM", region: "US", sector: "Financials", symbolId: 4 },
 ];
 
+export var symbolPutTestData: Symbol[] = [
+    { ticker: "IBM", region: "US", sector: "Information Technology", symbolId: 1 },
+    { ticker: "AAPL", region: "US", sector: "Information Technology", symbolId: 2 },
+    { ticker: "HMN", region: "US", sector: "Information Technology", symbolId: 3 },
+    { ticker: "IBM", region: "US", sector: "Financials", symbolId: 4 },
+];
+
 export var priceTestData: Price[] = [
     {
         priceId: 1,
