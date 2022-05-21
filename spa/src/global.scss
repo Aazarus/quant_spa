@@ -27,11 +27,19 @@
 
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .mat-row {
-  min-height:30px;
+  min-height: 30px;
   max-height: 40px;
 }
 
@@ -48,24 +56,41 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 ion-content div {
-    margin: 10px;
-  }
-  
-  .active-parent {
-    font-weight: 500;
-  }
-  
-  .sub-item {
-    font-size: small;
-    padding-left: 75px;
-  }
+  margin: 10px;
+}
 
-  .example-form {
-    min-width: 100px;
-    max-width: 300px;
-    width: 100%;
+.active-parent {
+  font-weight: 500;
+}
+
+.sub-item {
+  font-size: small;
+  padding-left: 75px;
+}
+
+.example-form {
+  min-width: 100px;
+  max-width: 300px;
+  width: 100%;
 }
 
 .example-full-width {
-    width: 100%;
+  width: 100%;
+}
+
+.mat-cell,
+.mat-header-cell {
+  word-wrap: initial;
+  display: table-cell;
+  padding: 0px 10px;
+  line-break: unset;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.mat-row,
+.mat-header-row {
+  display: table-row;
 }
