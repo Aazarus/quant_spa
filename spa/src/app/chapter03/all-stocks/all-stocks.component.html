@@ -1,7 +1,33 @@
 <app-header [title]="title"></app-header>
 
 <ion-content [fullscreen]="true">
-  <div>
+  <div style="overflow-x:auto">
 
+    <table mat-table [dataSource]="stocks" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>Symbol ID</mat-header-cell>
+        <mat-cell *matCellDef="let stock">{{stock?.symbolId}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ticker">
+        <mat-header-cell *matHeaderCellDef>Ticker</mat-header-cell>
+        <mat-cell *matCellDef="let stock">{{stock?.ticker}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="region">
+        <mat-header-cell *matHeaderCellDef>Region</mat-header-cell>
+        <mat-cell *matCellDef="let stock">{{stock?.region}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="sector">
+        <mat-header-cell *matHeaderCellDef>Sector</mat-header-cell>
+        <mat-cell *matCellDef="let stock">{{stock?.sector}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedCols"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedCols;"></mat-row>
+
+    </table>
   </div>
 </ion-content>

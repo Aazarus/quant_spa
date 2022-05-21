@@ -9,7 +9,8 @@ import { Symbol } from 'src/app/models/symbol'
 })
 export class AllStocksComponent {
 
-  public readonly title: string = 'All Stocks'
+  public readonly title: string = 'All Stocks';
+  public displayedCols: string[] = ['id', 'ticker', 'region', 'sector'];
 
   constructor(private repoService: RepositoryService) { }
 
