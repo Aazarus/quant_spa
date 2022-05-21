@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { IonicModule, NavController } from '@ionic/angular';
-
+import { IonicModule } from '@ionic/angular';
 import { HomePage } from './home.page';
 
 describe('HomePage', () => {
@@ -9,18 +8,18 @@ describe('HomePage', () => {
   let fixture: ComponentFixture<HomePage>;
 
   beforeEach(waitForAsync(() => {
-    const navControllerSpyObj = jasmine.createSpyObj('NavController', [''])
     TestBed.configureTestingModule({
       declarations: [ HomePage ],
-      imports: [IonicModule.forRoot()],
-      providers: [
-        RouterTestingModule,
-        { provider: NavController, useValue: navControllerSpyObj }
-      ]
+      imports: [IonicModule.forRoot(),
+        RouterTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });
