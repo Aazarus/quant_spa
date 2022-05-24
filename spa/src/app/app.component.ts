@@ -38,6 +38,7 @@ export class AppComponent {
       title: 'Chapter 03',
       children: [
         { title: 'All Stocks', url: '/chapter03/all-stocks' },
+        { title: 'Stock Price', url: '/chapter03/stock-price' },
       ]
     }
   ];

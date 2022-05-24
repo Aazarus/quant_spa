@@ -1,3 +1,4 @@
+import { StockPriceComponent } from './stock-price/stock-price.component';
 import { CandleService } from 'src/app/services/candle.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,8 @@ import { Chapter03RoutingModule } from './chapter03-routing.module';
 import { AllStocksComponent } from './all-stocks/all-stocks.component';
 
 const components = [
-  AllStocksComponent
+  AllStocksComponent,
+  StockPriceComponent
 ];
 
 @NgModule({
