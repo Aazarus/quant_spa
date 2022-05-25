@@ -66,14 +66,14 @@ export class RepositoryService {
   }
 
   public getStockAndPriceWithTicker(ticker: string, start: string, end: string): void {
-    this.httpClient.get<Symbol>(this.url + `api/stocks/and-prices-with-ticker/${ticker}/${start}/"${end}`)
+    this.httpClient.get<Symbol>(this.url + `api/stocks/and-prices-with-ticker/${ticker}/${start}/${end}`)
       .subscribe(
         result => this._stockWithTicker = result,
         error => console.log("Received an error", error));
   }
 
   public getStockAndPrice(id: number, start: string, end: string): void {
-    this.httpClient.get<Symbol>(this.url + `api/stocks/${id}/${start}/"${end}`)
+    this.httpClient.get<Symbol>(this.url + `api/stocks/${id}/${start}/${end}`)
       .subscribe(
         result => this._stock = result,
         error => console.log("Received an error", error));
