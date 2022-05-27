@@ -25,7 +25,7 @@ describe('DirectiveTestComponent', () => {
 
   describe('getStock', () => {
 
-    it('', () => {
+    it('should return the stock of a given id', () => {
 
       // Arrange
       const id = component.stocks[1].id;
