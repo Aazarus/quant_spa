@@ -2,6 +2,36 @@
 
 <ion-content [fullscreen]="true">
   <div style="overflow-x:auto" class="root">
-    
+
+    <table mat-table [dataSource]="indexData">
+
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+        <mat-cell *matCellDef="let item">{{item.date | date: 'dd/MM/yyyy'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ig">
+        <mat-header-cell *matHeaderCellDef>IG Spread</mat-header-cell>
+        <mat-cell *matCellDef="let item">{{item.igSpread}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="hy">
+        <mat-header-cell *matHeaderCellDef>HY Spread</mat-header-cell>
+        <mat-cell *matCellDef="let item">{{item.hySpread}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="spx">
+        <mat-header-cell *matHeaderCellDef>SPX Spread</mat-header-cell>
+        <mat-cell *matCellDef="let item">{{item.spx}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="vix">
+        <mat-header-cell *matHeaderCellDef>VIX Spread</mat-header-cell>
+        <mat-cell *matCellDef="let item">{{item.vix}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedCols"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedCols"></mat-row>
+    </table>
   </div>
 </ion-content>

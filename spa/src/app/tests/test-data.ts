@@ -67,15 +67,12 @@ export var symbolAndPriceTestData: Symbol[] =[
     symbolId: symbolTestData[1].symbolId, 
     prices: priceTestData
 },
-
-]
-
-;
+];
 
 export var indexDataTestData: IndexData[] = [
     {
         id: 1,
-        date: new Date('10/03/2008'),
+        date: new Date('09/03/2008'),
         igSpread: 193.39,
         hySpread: 776.82,
         spx: 1273.37,
@@ -83,7 +80,7 @@ export var indexDataTestData: IndexData[] = [
     },
     {
         id: 2,
-        date: new Date('11/03/2008'),
+        date: new Date('10/03/2008'),
         igSpread: 176.39,
         hySpread: 866.82,
         spx: 1353.37,
@@ -91,7 +88,7 @@ export var indexDataTestData: IndexData[] = [
     },
     {
         id: 3,
-        date: new Date('12/03/2008'),
+        date: new Date('11/03/2008'),
         igSpread: 177.39,
         hySpread: 928.82,
         spx: 1753.37,
@@ -99,7 +96,7 @@ export var indexDataTestData: IndexData[] = [
     },
     {
         id: 4,
-        date: new Date('13/03/2008'),
+        date: new Date('12/03/2008'),
         igSpread: 167.39,
         hySpread: 628.82,
         spx: 1853.37,
