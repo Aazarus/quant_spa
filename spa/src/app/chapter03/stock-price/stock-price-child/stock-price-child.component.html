@@ -1,0 +1,57 @@
+<h3>Stock Details</h3>
+
+<div *ngIf="!!stock">
+  <p>
+    <b>ID: </b>{{stock.symbolId}}, <b>Ticker: </b>{{stock.ticker}},
+    <b>Region: </b>{{stock.region}}, <b>Sector: </b>{{stock.sector}}
+  </p>
+
+  <div *ngIf="stock.prices && stock.prices.length > 0">
+
+    <h4>Prices:</h4>
+
+    <div style="overflow-x:auto;">
+      <table mat-table [dataSource]="stock.prices">
+
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.date | date: 'dd/MM/yyyy'}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="open">
+          <mat-header-cell *matHeaderCellDef>Open</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.open}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="high">
+          <mat-header-cell *matHeaderCellDef>High</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.high}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="low">
+          <mat-header-cell *matHeaderCellDef>Low</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.low}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="close">
+          <mat-header-cell *matHeaderCellDef>Close</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.close}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="closeAdj">
+          <mat-header-cell *matHeaderCellDef>Close Adj</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.closeAdj}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="volume">
+          <mat-header-cell *matHeaderCellDef>Volume</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.volume}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedCols"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedCols;"></mat-row>
+
+      </table>
+    </div>
+  </div>
+</div>

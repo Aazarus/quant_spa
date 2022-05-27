@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CandleService } from './services/candle.service';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CandleService } from './services/candle.service';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    CandleService
+    CandleService,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ],
   bootstrap: [AppComponent],
 })

@@ -1,11 +1,10 @@
-import { symbolTestData, symbolAndPriceTestData } from './../../tests/test-data';
+import { symbolAndPriceTestData } from './../../tests/test-data';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { RepositoryService } from 'src/app/services/repository.service';
 
 import { StockPriceComponent } from './stock-price.component';
-import { Symbol } from 'src/app/models/symbol';
 
 describe('StockPriceComponent', () => {
   let component: StockPriceComponent;
@@ -13,11 +12,11 @@ describe('StockPriceComponent', () => {
   let repoServiceSpy: jasmine.SpyObj<RepositoryService>;
 
   beforeEach(waitForAsync(() => {
-    const repoServiceSpyObj = jasmine.createSpyObj('RepositoryService', 
+    const repoServiceSpyObj = jasmine.createSpyObj<RepositoryService>('RepositoryService', 
         ['getStockAndPrice', 'getStockAndPriceWithTicker'], 
         {
-          'stock': symbolTestData[0],
-          'stockWithTicker': symbolTestData[1]
+          'stock': symbolAndPriceTestData[0],
+          'stockWithTicker': symbolAndPriceTestData[1]
         }
       );
 
@@ -60,59 +59,63 @@ describe('StockPriceComponent', () => {
     });
   });
 
-  describe('stock getter', () => {
-    it('should return the stock held by the RepositoryService', () => {
+  describe("stock getter", () => {
+    it("should return repoService stock value if getWithTicker is false", () => {
       // Arrange
-      const expected: Symbol = symbolTestData[0];
+      // Act
+      var actual = component.stock;
+
+      // Assert
+      expect(actual).toBe(symbolAndPriceTestData[0])
+    });
+
+    it("should return repoService stockWithTicker value if getWithTicker is true", () => {
+      // Arrange
+      const event = {
+        index: true
+      };
+      component.onTabChanged(event);
 
       // Act
       var actual = component.stock;
 
       // Assert
-      expect(actual).toEqual(expected);
+      expect(actual).toBe(symbolAndPriceTestData[1])
     });
   });
 
-  describe('stockWithTicker getter', () => {
-    it('should return the stock held by the RepositoryService', () => {
+  describe("getStock", () => {
+
+    it('should call getStockAndPrice if getWithTicker is false', () => {
       // Arrange
-      const expected: Symbol = symbolTestData[1];
+      spyOn(component, 'getStockAndPrice');
+      spyOn(component, 'getStockAndPriceWithTicker');
+      expect(component['getWithTicker']).toBeFalsy();
 
       // Act
-      var actual = component.stockWithTicker;
+      component.getStock();
 
       // Assert
-      expect(actual).toEqual(expected);
+      expect(component.getStockAndPrice).toHaveBeenCalled();
+      expect(component.getStockAndPriceWithTicker).not.toHaveBeenCalled();
     });
-  });
 
-  describe('getStockAndPrice', () => {
-    it('should call getStockAndPrice on the RepositoryService ', () => {
+    it('should call getStockAndPriceWithTicker if getWithTicker is true', () => {
       // Arrange
-      const symbolId = 1;
-      const startDate = "2018-01-01";
-      const endDate = "2018-03-01";
+      const event = {
+        index: true
+      };
+      component.onTabChanged(event);
+      spyOn(component, 'getStockAndPrice');
+      spyOn(component, 'getStockAndPriceWithTicker');
+      expect(component['getWithTicker']).toBeTruthy();
 
       // Act
-      component.getStockAndPrice(symbolId, startDate, endDate);
+      component.getStock();
 
       // Assert
-      expect(repoServiceSpy.getStockAndPrice).toHaveBeenCalledWith(symbolId, startDate, endDate);
+      expect(component.getStockAndPrice).not.toHaveBeenCalled();
+      expect(component.getStockAndPriceWithTicker).toHaveBeenCalled();
     });
-  });
-
-  describe('getStockAndPriceWithTicker', () => {
-    it('should call getStockAndPrice on the RepositoryService ', () => {
-      // Arrange
-      const ticker = "IBM";
-      const startDate = "2018-01-01";
-      const endDate = "2018-03-01";
-
-      // Act
-      component.getStockAndPriceWithTicker(ticker, startDate, endDate);
-
-      // Assert
-      expect(repoServiceSpy.getStockAndPriceWithTicker).toHaveBeenCalledWith(ticker, startDate, endDate);
-    });
-  });
+  })
 });

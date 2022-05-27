@@ -1,8 +1,9 @@
+import { StockPriceChildComponent } from './stock-price/stock-price-child/stock-price-child.component';
 import { StockPriceComponent } from './stock-price/stock-price.component';
 import { CandleService } from 'src/app/services/candle.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -13,7 +14,8 @@ import { AllStocksComponent } from './all-stocks/all-stocks.component';
 
 const components = [
   AllStocksComponent,
-  StockPriceComponent
+  StockPriceComponent,
+  StockPriceChildComponent
 ];
 
 @NgModule({
@@ -25,7 +27,8 @@ const components = [
     HttpClientModule,
     Chapter03RoutingModule,
     FlexLayoutModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     components,

@@ -1,6 +1,52 @@
 <app-header [title]="title"></app-header>
 
-<ion-content [fullscreen]="true">
-  <div style="overflow-x:auto">
+<ion-content>
+  <div class="root" style="margin-bottom: 75px;">
+
+    <mat-tab-group (selectedTabChange)="onTabChanged($event);" [selectedIndex]="0">
+      <mat-tab label="Using Stock ID">
+        <br/><br/>
+
+        <mat-form-field>
+          <input matInput placeholder="Stock ID" [(ngModel)]="stockId" name="stockId">
+        </mat-form-field>
+
+      </mat-tab>
+
+      <mat-tab label="Using Stock Ticker">
+        <br/><br/>
+
+        <mat-form-field>
+          <input matInput placeholder="Stock Ticker" [(ngModel)]="ticker" name="ticker">
+        </mat-form-field>
+
+      </mat-tab>
+    </mat-tab-group>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a start date</mat-label>
+        <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Choose an end date</mat-label>
+        <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+    
+      <div>
+        <button mat-raised-button color="primary" class="right-align stock-button" (click)="getStockAndPrice()">Get Stock Details</button>
+      </div>
+    </div>
+
+  </div>
+  <div class="root" style="margin-bottom: 10px;">
+    <app-stock-price-child [stock]="stock"></app-stock-price-child>
   </div>
 </ion-content>
