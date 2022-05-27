@@ -1,3 +1,4 @@
+import { IndexDataComponent } from './index-data/index-data.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { StockPriceComponent } from './stock-price/stock-price.component';
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'stock-price',
     component: StockPriceComponent
+  },
+  {
+    path: 'index-data',
+    component: IndexDataComponent
   },
 ];
 

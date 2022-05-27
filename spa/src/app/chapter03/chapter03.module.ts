@@ -11,11 +11,13 @@ import { MaterialModule } from 'src/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { Chapter03RoutingModule } from './chapter03-routing.module';
 import { AllStocksComponent } from './all-stocks/all-stocks.component';
+import { IndexDataComponent } from './index-data/index-data.component';
 
 const components = [
   AllStocksComponent,
   StockPriceComponent,
-  StockPriceChildComponent
+  StockPriceChildComponent,
+  IndexDataComponent
 ];
 
 @NgModule({
