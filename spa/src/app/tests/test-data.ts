@@ -52,14 +52,25 @@ export var priceTestData: Price[] = [
     },
 ];
 
-export var symbolAndPriceTestData: Symbol =
+export var symbolAndPriceTestData: Symbol[] =[
 {
     ticker: symbolTestData[0].ticker, 
     region: symbolTestData[0].region, 
     sector: symbolTestData[0].sector, 
     symbolId: symbolTestData[0].symbolId, 
     prices: priceTestData
-};
+},
+{
+    ticker: symbolTestData[1].ticker, 
+    region: symbolTestData[1].region, 
+    sector: symbolTestData[1].sector, 
+    symbolId: symbolTestData[1].symbolId, 
+    prices: priceTestData
+},
+
+]
+
+;
 
 export var indexDataTestData: IndexData[] = [
     {

@@ -139,16 +139,16 @@ describe('RepositoryService', () => {
   describe("getStockAndPriceWithTicker", () => {
     it ("should get a single stock by ticker with prices for a given date period and set locally", () => {
       // Arrange
-      spyOn(httpClientSpy, 'get').and.returnValue(of(symbolAndPriceTestData));
+      spyOn(httpClientSpy, 'get').and.returnValue(of(symbolAndPriceTestData[0]));
       const start = "2017-11-07";
       const end = "2017-11-09";
 
       // Act
-      service.getStockAndPriceWithTicker(symbolAndPriceTestData.ticker, start, end);
+      service.getStockAndPriceWithTicker(symbolAndPriceTestData[0].ticker, start, end);
 
       // Assert
       expect(service['stockWithTicker']).not.toBeNull();
-      expect(service['stockWithTicker']).toEqual(symbolAndPriceTestData as Symbol);
+      expect(service['stockWithTicker']).toEqual(symbolAndPriceTestData[0] as Symbol);
     });
     
     // This can be improved to log the error to a third party service for monitoring
@@ -160,7 +160,7 @@ describe('RepositoryService', () => {
       const end = "2017-11-09";
 
       // Act
-      service.getStockAndPriceWithTicker(symbolAndPriceTestData.ticker, start, end);
+      service.getStockAndPriceWithTicker(symbolAndPriceTestData[0].ticker, start, end);
 
       // Assert
       expect(service['stockWithTicker']).toBeNull();
@@ -171,16 +171,16 @@ describe('RepositoryService', () => {
   describe("getStockAndPrice", () => {
     it ("should get a single stock by id with prices for a given date period and set locally", () => {
       // Arrange
-      spyOn(httpClientSpy, 'get').and.returnValue(of(symbolAndPriceTestData));
+      spyOn(httpClientSpy, 'get').and.returnValue(of(symbolAndPriceTestData[0]));
       const start = "2017-11-07";
       const end = "2017-11-09";
 
       // Act
-      service.getStockAndPrice(symbolAndPriceTestData.symbolId, start, end);
+      service.getStockAndPrice(symbolAndPriceTestData[0].symbolId, start, end);
 
       // Assert
       expect(service['stock']).not.toBeNull();
-      expect(service['stock']).toEqual(symbolAndPriceTestData as Symbol);
+      expect(service['stock']).toEqual(symbolAndPriceTestData[0] as Symbol);
     });
     
     // This can be improved to log the error to a third party service for monitoring
@@ -192,7 +192,7 @@ describe('RepositoryService', () => {
       const end = "2017-11-09";
 
       // Act
-      service.getStockAndPrice(symbolAndPriceTestData.symbolId, start, end);
+      service.getStockAndPrice(symbolAndPriceTestData[0].symbolId, start, end);
 
       // Assert
       expect(service['stock']).toBeNull();
