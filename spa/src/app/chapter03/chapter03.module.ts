@@ -1,3 +1,4 @@
+import { StockCrudComponent } from './stock-crud/stock-crud.component';
 import { StockPriceChildComponent } from './stock-price/stock-price-child/stock-price-child.component';
 import { StockPriceComponent } from './stock-price/stock-price.component';
 import { CandleService } from 'src/app/services/candle.service';
@@ -17,7 +18,8 @@ const components = [
   AllStocksComponent,
   StockPriceComponent,
   StockPriceChildComponent,
-  IndexDataComponent
+  IndexDataComponent,
+  StockCrudComponent
 ];
 
 @NgModule({
