@@ -1,3 +1,58 @@
-<p>
-  stock-create works!
-</p>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+
+      <div class="ion-text-center">
+        <h3 style="margin: 25px">
+          Create a New Stock
+        </h3>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-text-center">
+    <ion-col>
+      <form>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <mat-form-field>
+                <input matInput placeholder="Ticker" [(ngModel)]="ticker" name="ticker">
+              </mat-form-field>
+            </ion-col>
+
+            <ion-col>
+              <!-- ToDo: This could be updated to be a selector.
+                  This would include adding another page to allow users to add/update/remove regions on the db -->
+              <mat-form-field>
+                <input matInput placeholder="Region" [(ngModel)]="region" name="region">
+              </mat-form-field>
+            </ion-col>
+
+
+            <ion-col>
+              <!-- ToDo: This could be updated to be a selector.
+                  This would include adding another page to allow users to add/update/remove sectors on the db -->
+              <mat-form-field>
+                <input matInput placeholder="Sector" [(ngModel)]="sector" name="sector">
+              </mat-form-field>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <div>
+        <button mat-raised-button color="primary" (click)="createStock()" style="float: right;">Create Stock</button>
+      </div>
+      <span *ngIf="stock" style="color:green">
+        Stock with ID '{{stock.symbolId}}', Ticker '{{stock.ticker}}', Region '{{stock.region}}', and Sector
+        '{{stock.sector}}' has been added to the database
+      </span>
+    </ion-col>
+  </ion-row>
+</ion-grid>

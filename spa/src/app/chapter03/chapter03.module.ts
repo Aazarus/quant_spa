@@ -1,3 +1,4 @@
+import { StockCreateComponent } from './stock-crud/stock-create/stock-create.component';
 import { StockCrudComponent } from './stock-crud/stock-crud.component';
 import { StockPriceChildComponent } from './stock-price/stock-price-child/stock-price-child.component';
 import { StockPriceComponent } from './stock-price/stock-price.component';
@@ -19,7 +20,8 @@ const components = [
   StockPriceComponent,
   StockPriceChildComponent,
   IndexDataComponent,
-  StockCrudComponent
+  StockCrudComponent,
+  StockCreateComponent
 ];
 
 @NgModule({
