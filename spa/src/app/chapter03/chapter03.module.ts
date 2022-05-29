@@ -1,5 +1,3 @@
-import { StockCreateComponent } from './stock-crud/stock-create/stock-create.component';
-import { StockCrudComponent } from './stock-crud/stock-crud.component';
 import { StockPriceChildComponent } from './stock-price/stock-price-child/stock-price-child.component';
 import { StockPriceComponent } from './stock-price/stock-price.component';
 import { CandleService } from 'src/app/services/candle.service';
@@ -14,6 +12,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { Chapter03RoutingModule } from './chapter03-routing.module';
 import { AllStocksComponent } from './all-stocks/all-stocks.component';
 import { IndexDataComponent } from './index-data/index-data.component';
+import { StockCreateComponent } from './stock-crud/stock-create/stock-create.component';
+import { StockCrudComponent } from './stock-crud/stock-crud.component';
+import { StockUpdateComponent } from './stock-crud/stock-update/stock-update.component';
 
 const components = [
   AllStocksComponent,
@@ -21,7 +22,8 @@ const components = [
   StockPriceChildComponent,
   IndexDataComponent,
   StockCrudComponent,
-  StockCreateComponent
+  StockCreateComponent,
+  StockUpdateComponent
 ];
 
 @NgModule({
