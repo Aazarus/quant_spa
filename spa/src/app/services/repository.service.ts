@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { IndexData } from 'src/app/models/index-data';
 import { Price } from 'src/app/models/price';
 import { Symbol } from 'src/app/models/symbol';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,7 @@ export class RepositoryService {
   }
 
   public get stock(): Symbol {
+    console.log("🚀 ~ file: repository.service.ts ~ line 33 ~ RepositoryService ~ getstock ~ this._stock", this._stock)
     return this._stock;
   }
   
@@ -56,6 +58,10 @@ export class RepositoryService {
       .subscribe(
         result => this._stock = result,
         error => console.log("Received an error", error));
+  }
+
+  public getStockWithResult(id: number): Observable<Object> {
+    return this.httpClient.get<Symbol>(this.url + `api/stocks/${id}`);
   }
 
   public getStockWithTicker(ticker: string): void {
@@ -99,7 +105,7 @@ export class RepositoryService {
       region: stock.region,
       sector: stock.sector
     };
-    this.httpClient.post<number>(this.url + `/api/stocks`, newStock).subscribe(
+    this.httpClient.post<number>(this.url + `api/stocks`, newStock).subscribe(
       result => {
         stock.symbolId = result;
         this._stocks.push(stock);
@@ -111,13 +117,24 @@ export class RepositoryService {
 
   public updateStock(stock: Symbol): void {    
     let newStock: Symbol = {
+      symbolId: stock.symbolId,
       ticker: stock.ticker,
       region: stock.region,
       sector: stock.sector
     };
-    this.httpClient.put(this.url + `/api/stocks/${stock.symbolId}`, newStock).subscribe(
+    this.httpClient.put(this.url + `api/stocks/${stock.symbolId}`, newStock).subscribe(
       _ => this.getStocks(),
       error => console.log("Received an error", error));
+  }
+
+  public updateStockWithResult(stock: Symbol): Observable<Object> {
+    let newStock: Symbol = {
+      symbolId: stock.symbolId,
+      ticker: stock.ticker,
+      region: stock.region,
+      sector: stock.sector
+    };
+    return this.httpClient.put(this.url + `api/stocks/${stock.symbolId}`, newStock);
   }
 
   public deleteStock(id: number): void {    
