@@ -106,6 +106,21 @@ describe('RepositoryService', () => {
     });
   });
 
+  describe('getStockWithResult', () => {
+
+    it('should call http get with the expected url', () => {
+
+      // Arrange
+      spyOn(httpClientSpy, 'get');
+
+      // Act
+      service.getStockWithResult(symbolTestData[0].symbolId);
+
+      // Assert
+      expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/stocks/1");
+    });
+  });
+
   describe('getStockWithTicker', () => {
 
     it('should get a single stock by id and set locally.', () => {
@@ -339,6 +354,21 @@ describe('RepositoryService', () => {
       // Assert
       expect(httpClientSpy.put).toHaveBeenCalled();
       expect(console.log).toHaveBeenCalled();
+    });
+  });
+  
+  describe('updateStockWithResult', () => {
+
+    it('should call http put with the expected url', () => {
+
+      // Arrange
+      spyOn(httpClientSpy, 'put');
+
+      // Act
+      service.updateStockWithResult(symbolTestData[0]);
+
+      // Assert
+      expect(httpClientSpy.put).toHaveBeenCalledWith("https://localhost:7108/api/stocks/1", symbolTestData[0]);
     });
   });
 
