@@ -1,3 +1,82 @@
-<p>
-  stock-update works!
-</p>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <div class="ion-text-center">
+        <h3 style="margin: 25px">
+          Update a Stock Object
+        </h3>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div class="ion-text-center">
+        <ion-text>
+          Enter a Stock Id to be updated:
+        </ion-text>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-text-center">
+    <ion-col>
+      <mat-form-field>
+        <input matInput placeholder="Stock Id" [(ngModel)]="stockId" name="stockId">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button mat-raised-button color="primary" (click)="getStock()" class="right-align">Get Stock</button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="ion-text-center">      
+      <span *ngIf="updated" style="color:green">
+        <ion-text>Stock with ID '{{stockId}}' has been updated.</ion-text>        
+      </span>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid *ngIf="!!symbol">
+  <ion-row class="ion-text-center">
+    <ion-col>
+      <form>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <mat-form-field>
+                <input matInput placeholder="Ticker" [(ngModel)]="symbol.ticker" name="ticker">
+              </mat-form-field>
+            </ion-col>
+
+            <ion-col>
+              <!-- ToDo: This could be updated to be a selector.
+                This would include adding another page to allow users to add/update/remove regions on the db -->
+              <mat-form-field>
+                <input matInput placeholder="Region" [(ngModel)]="symbol.region" name="region">
+              </mat-form-field>
+            </ion-col>
+
+
+            <ion-col>
+              <!-- ToDo: This could be updated to be a selector.
+                This would include adding another page to allow users to add/update/remove sectors on the db -->
+              <mat-form-field>
+                <input matInput placeholder="Sector" [(ngModel)]="symbol.sector" name="sector">
+              </mat-form-field>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <div>
+        <button mat-raised-button color="primary" (click)="updateStock()" style="float: right;">Update Stock</button>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
