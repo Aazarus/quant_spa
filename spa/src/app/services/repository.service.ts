@@ -30,7 +30,6 @@ export class RepositoryService {
   }
 
   public get stock(): Symbol {
-    console.log("🚀 ~ file: repository.service.ts ~ line 33 ~ RepositoryService ~ getstock ~ this._stock", this._stock)
     return this._stock;
   }
   
@@ -138,8 +137,12 @@ export class RepositoryService {
   }
 
   public deleteStock(id: number): void {    
-    this.httpClient.delete(this.url + `/api/stocks/${id}`).subscribe(
+    this.httpClient.delete(this.url + `api/stocks/${id}`).subscribe(
       _ => this.getStocks(),
       error => console.log("Received an error", error));
+  }
+
+  public deleteStockWithResult(id: number): Observable<object> {
+    return this.httpClient.delete(this.url + `api/stocks/${id}`);
   }
 }

@@ -403,4 +403,20 @@ describe('RepositoryService', () => {
       expect(console.log).toHaveBeenCalled();
     });
   });
+  
+
+  describe('deleteStockWithResult', () => {
+
+    it('should call http get with the expected url', () => {
+
+      // Arrange
+      spyOn(httpClientSpy, 'delete');
+
+      // Act
+      service.deleteStockWithResult(symbolTestData[0].symbolId);
+
+      // Assert
+      expect(httpClientSpy.delete).toHaveBeenCalledWith("https://localhost:7108/api/stocks/1");
+    });
+  });
 });
