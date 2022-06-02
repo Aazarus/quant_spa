@@ -1,5 +1,4 @@
-import { StockPriceChildComponent } from './stock-price/stock-price-child/stock-price-child.component';
-import { StockPriceComponent } from './stock-price/stock-price.component';
+import { StockDeleteDialogComponent } from './stock-crud/stock-delete/stock-delete-dialog/stock-delete-dialog.component';
 import { CandleService } from 'src/app/services/candle.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,6 +14,9 @@ import { IndexDataComponent } from './index-data/index-data.component';
 import { StockCreateComponent } from './stock-crud/stock-create/stock-create.component';
 import { StockCrudComponent } from './stock-crud/stock-crud.component';
 import { StockUpdateComponent } from './stock-crud/stock-update/stock-update.component';
+import { StockDeleteComponent } from './stock-crud/stock-delete/stock-delete.component';
+import { StockPriceChildComponent } from './stock-price/stock-price-child/stock-price-child.component';
+import { StockPriceComponent } from './stock-price/stock-price.component';
 
 const components = [
   AllStocksComponent,
@@ -23,7 +25,9 @@ const components = [
   IndexDataComponent,
   StockCrudComponent,
   StockCreateComponent,
-  StockUpdateComponent
+  StockUpdateComponent,
+  StockDeleteComponent,
+  StockDeleteDialogComponent
 ];
 
 @NgModule({
@@ -46,6 +50,7 @@ const components = [
   ],
   providers: [
     CandleService
-  ]
+  ],
+  entryComponents:[StockDeleteDialogComponent]
 })
 export class Chapter03Module {}

@@ -1,0 +1,80 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <div class="ion-text-center">
+        <h3 style="margin: 25px">
+          Delete a Stock
+        </h3>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div class="ion-text-center">
+        <ion-text>
+          Enter a Stock Id to be deleted:
+        </ion-text>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-text-center">
+    <ion-col>
+      <mat-form-field>
+        <input matInput placeholder="Stock Id" [(ngModel)]="stockId" name="stockId">
+      </mat-form-field>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button mat-raised-button color="primary" (click)="getStock()" class="right-align">Get Stock</button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="ion-text-center">      
+      <span *ngIf="isDeleted" style="color:green">
+        <ion-text>Stock with ID '{{stockId}}' has been updated.</ion-text>        
+      </span>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-grid *ngIf="!!stock">
+  <ion-row class="ion-text-center">
+    <ion-col>
+      <form>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <mat-form-field>
+                <input matInput placeholder="Ticker" [(ngModel)]="stock.ticker" name="ticker">
+              </mat-form-field>
+            </ion-col>
+
+            <ion-col>
+              <!-- ToDo: This could be updated to be a selector.
+                This would include adding another page to allow users to add/update/remove regions on the db -->
+              <mat-form-field>
+                <input matInput placeholder="Region" [(ngModel)]="stock.region" name="region">
+              </mat-form-field>
+            </ion-col>
+
+
+            <ion-col>
+              <!-- ToDo: This could be updated to be a selector.
+                This would include adding another page to allow users to add/update/remove sectors on the db -->
+              <mat-form-field>
+                <input matInput placeholder="Sector" [(ngModel)]="stock.sector" name="sector">
+              </mat-form-field>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div class="ion-text-center">
+        <button mat-raised-button color="primary" (click)="openDialog()" class="right-align">Delete</button>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
