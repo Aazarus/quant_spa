@@ -404,7 +404,6 @@ describe('RepositoryService', () => {
     });
   });
   
-
   describe('deleteStockWithResult', () => {
 
     it('should call http get with the expected url', () => {
