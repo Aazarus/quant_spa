@@ -1,6 +1,7 @@
 import { IndexData } from 'src/app/models/index-data';
 import { Symbol } from 'src/app/models/symbol';
 import { Price } from 'src/app/models/price';
+import { MarketData } from 'src/app/models/market-data';
 
 export var symbolTestData: Symbol[] = [
     { ticker: "IBM", region: "US", sector: "Information Technology", symbolId: 1 },
@@ -103,3 +104,54 @@ export var indexDataTestData: IndexData[] = [
         vix: 31.38
     },
 ];
+
+export var yahooStockTestData: MarketData[] = [
+    
+    {
+        ticker: "IBM",
+        date: getDate(-365),
+        open: 123.321,
+        high: 124.321,
+        low: 122.021,
+        close: 124.320,
+        adjustedClose: 124.0,
+        volume: 32425284
+    },
+    {
+        ticker: "IBM",
+        date: getDate(-364),
+        open: 124.320,
+        high: 125.81,
+        low: 122.021,
+        close: 125.30,
+        adjustedClose: 125.0,
+        volume: 32443284
+    },
+    {
+        ticker: "IBM",
+        date: getDate(-363),
+        open: 125.30,
+        high:125.481,
+        low:123.021,
+        close: 124.30,
+        adjustedClose: 124.0,
+        volume: 31425284
+    },
+    {
+        ticker: "IBM",
+        date: getDate(-362),
+        open: 124.30,
+        high: 126.481,
+        low: 122.021,
+        close: 124.30,
+        adjustedClose: 123.5,
+        volume: 41425284
+    }
+];
+
+function getDate(addDays: number) {
+    var date = new Date();
+    date.setDate(date.getDate() + addDays);
+
+    return date;
+}
