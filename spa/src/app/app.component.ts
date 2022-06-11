@@ -42,6 +42,12 @@ export class AppComponent {
         { title: 'Index Data', url: '/chapter03/index-data' },
         { title: 'Stock CRUD', url: '/chapter03/stock-crud' },
       ]
+    },
+    {
+      title: 'Chapter 04',
+      children: [
+        { title: 'Yahoo Stock', url: '/chapter04/yahoo-stock' },
+      ]
     }
   ];
 
