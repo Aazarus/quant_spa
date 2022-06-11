@@ -11,7 +11,7 @@ import { StockDeleteDialogComponent } from './stock-delete-dialog/stock-delete-d
 })
 export class StockDeleteComponent {
 
-  public stockId: number = 1;
+  public stockId: number;
   public isDeleted: boolean = false;
 
   constructor(private repoService: RepositoryService, private dialog: MatDialog) { }

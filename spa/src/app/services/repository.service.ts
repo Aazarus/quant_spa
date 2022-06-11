@@ -22,7 +22,6 @@ export class RepositoryService {
     this.url = environment.baseUrl;
     this.getStocks();
     this.getIndexDataPeriod("2005-01-01", "2005-03-01");
-    this.getStock(1);
   }
 
   public get stocks(): Symbol[] {

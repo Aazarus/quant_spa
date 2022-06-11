@@ -9,7 +9,7 @@ import { Symbol } from 'src/app/models/symbol';
 })
 export class StockUpdateComponent implements OnInit {
 
-  public stockId: number = 1;
+  public stockId: number;
   public symbol: Symbol = null;
   public updated: boolean = false;
 
