@@ -25,7 +25,7 @@ export class MarketDataService {
     this.httpClient.get<MarketData[]>(apiUrl).subscribe(result => this._yahooStock = result);
   }
 
-  public getYahooStockWithResult(ticker: string, start: string, end: string, period: string): Observable<Object> {
+  public getYahooStockWithResult(ticker: string, start: string, end: string, period: string): Observable<MarketData[]> {
     const apiUrl = `${this.url}api/YahooStock/${ticker}/${start}/${end}/${period}`;
     return this.httpClient.get<MarketData[]>(apiUrl);
   }
