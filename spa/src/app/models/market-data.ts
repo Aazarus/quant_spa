@@ -5,6 +5,6 @@ export interface MarketData {
     high?: number,
     low?: number,
     close?: number,
-    adjustedClose?: number,
+    closeAdj?: number,
     volume?: number,
 };

@@ -105,8 +105,7 @@ export var indexDataTestData: IndexData[] = [
     },
 ];
 
-export var yahooStockTestData: MarketData[] = [
-    
+export var yahooStockTestData: MarketData[] = [    
     {
         ticker: "IBM",
         date: getDate(-365),
@@ -114,7 +113,7 @@ export var yahooStockTestData: MarketData[] = [
         high: 124.321,
         low: 122.021,
         close: 124.320,
-        adjustedClose: 124.0,
+        closeAdj: 124.0,
         volume: 32425284
     },
     {
@@ -124,7 +123,7 @@ export var yahooStockTestData: MarketData[] = [
         high: 125.81,
         low: 122.021,
         close: 125.30,
-        adjustedClose: 125.0,
+        closeAdj: 125.0,
         volume: 32443284
     },
     {
@@ -134,7 +133,7 @@ export var yahooStockTestData: MarketData[] = [
         high:125.481,
         low:123.021,
         close: 124.30,
-        adjustedClose: 124.0,
+        closeAdj: 124.0,
         volume: 31425284
     },
     {
@@ -144,7 +143,7 @@ export var yahooStockTestData: MarketData[] = [
         high: 126.481,
         low: 122.021,
         close: 124.30,
-        adjustedClose: 123.5,
+        closeAdj: 123.5,
         volume: 41425284
     }
 ];
