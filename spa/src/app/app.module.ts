@@ -9,7 +9,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CandleService } from './services/candle.service';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MomentDateModule } from '@angular/material-moment-adapter';
+import { DATE_FORMATS } from './shared/DateFormat';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,14 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     BrowserAnimationsModule,
     FlexLayoutModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    MomentDateModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     CandleService,
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: DATE_FORMATS },
   ],
   bootstrap: [AppComponent],
 })

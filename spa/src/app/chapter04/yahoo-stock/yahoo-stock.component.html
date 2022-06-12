@@ -2,5 +2,78 @@
 
 <ion-content>
   <div class="root" style="margin-bottom: 75px;">
+
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+
+            <div class="ion-text-center">
+              <h3 style="margin: 25px">
+                Get Stock Data from Yahoo
+              </h3>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-text-center">
+          <ion-col>
+            <form>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <mat-form-field>
+                      <input matInput placeholder="Ticker" [(ngModel)]="ticker" name="ticker">
+                    </mat-form-field>
+                  </ion-col>
+
+                  <ion-col class="ion-align-self-center">
+                    <mat-select placeholder="Select a period" [(value)]="period">
+                      <mat-option value="daily">Daily</mat-option>
+                      <mat-option value="weekly">Weekly</mat-option>
+                      <mat-option value="monthly">Monthly</mat-option>
+                    </mat-select>
+                  </ion-col>
+
+                </ion-row>
+                <ion-row>
+                  <ion-col class="ion-text-center">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Choose a start date</mat-label>
+                      <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" name="startDate">
+                      <mat-hint>DD/MM/YYYY</mat-hint>
+                      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                      <mat-datepicker #startPicker></mat-datepicker>
+                    </mat-form-field>
+                  </ion-col>
+
+                  <ion-col class="ion-text-center">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Choose an end date</mat-label>
+                      <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" name="endDate">
+                      <mat-hint>DD/MM/YYYY</mat-hint>
+                      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                      <mat-datepicker #endPicker></mat-datepicker>
+                    </mat-form-field>
+
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </form>
+          </ion-col>
+        </ion-row>
+
+        <div>
+          <button mat-raised-button color="primary" class="right-align stock-button" (click)="getStock()">Get
+            Stock Data</button>
+        </div>
+      </ion-grid>
+    </div>
+
   </div>
+
+  <div class="root">
+    <app-yahoo-stock-table [marketData]="marketData"></app-yahoo-stock-table>
+  </div>
+
 </ion-content>
