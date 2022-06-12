@@ -27,7 +27,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-label');
-    expect(menuItems.length).toEqual(4);
+    expect(menuItems.length).toEqual(5);
   }));
 
   it('should have urls', waitForAsync(() => {
@@ -35,6 +35,6 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-item');
-    expect(menuItems.length).toEqual(4);
+    expect(menuItems.length).toEqual(5);
   }));
 });
