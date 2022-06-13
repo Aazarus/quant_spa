@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RepositoryService } from 'src/app/services/repository.service';
 import { Symbol } from 'src/app/models/symbol';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -8,13 +8,15 @@ import { FormControl, FormGroup } from '@angular/forms';
   templateUrl: './stock-price.component.html',
   styleUrls: ['./stock-price.component.scss']
 })
-export class StockPriceComponent implements OnInit {
+export class StockPriceComponent {
 
   public title: string = 'Stock Price';
-  public stockId: number = 103;
-  public ticker: string = 'IBM';
-  public startDate: string = '2017-11-07';
-  public endDate: string = '2017-11-18';
+  public stockId: number;
+  public ticker: string;
+  public startDate: string;
+  public startDateLabel: string = "Select a start date"
+  public endDate: string;
+  public endDateLabel: string = "Select an end date"
 
   private getWithTicker: boolean = false;
 
@@ -25,10 +27,6 @@ export class StockPriceComponent implements OnInit {
 
   constructor(private repoService: RepositoryService) { }
 
-  ngOnInit() {
-    this.getStockAndPriceWithTicker();
-    this.getStockAndPrice();
-  }
 
   public get stock(): Symbol {
     if (this.getWithTicker)
@@ -56,5 +54,13 @@ export class StockPriceComponent implements OnInit {
   public onTabChanged(event: any): void {
     this.getWithTicker = event.index;
     this.getStock();
+  }
+
+  public startDateSelected(event: string): void {
+    this.startDate = event
+  }
+  
+  public endDateSelected(event: string): void {
+    this.endDate = event
   }
 }

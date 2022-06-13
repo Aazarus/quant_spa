@@ -76,4 +76,36 @@ describe('YahooStockComponent', () => {
       expect(console.log).toHaveBeenCalled();
     });
   });
+
+  describe('startDateSelected', () => {
+    it('should set the startDate to the provided argument', () => {
+      // Arrange
+      component.startDate = "";
+      const newStartDate = "2001-01-01";
+
+      expect(component.startDate).toBe("");
+
+      // Act
+      component.startDateSelected(newStartDate);
+
+      // Assert
+      expect(component.startDate).toBe(newStartDate);
+    });
+  });
+
+  describe('endDateSelected', () => {
+    it('should set the endDate to the provided argument', () => {
+      // Arrange
+      component.endDate = "";
+      const newEndDate = "2001-01-01";
+
+      expect(component.endDate).toBe("");
+
+      // Act
+      component.endDateSelected(newEndDate);
+
+      // Assert
+      expect(component.endDate).toBe(newEndDate);
+    });
+  });
 });
