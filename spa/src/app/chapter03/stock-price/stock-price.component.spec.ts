@@ -44,21 +44,6 @@ describe('StockPriceComponent', () => {
     expect(component.title).toBe("Stock Price");
   });
 
-  describe('ngOnInit', () => {
-    it('should call getStockAndPrice and getStockAndPriceWithTicker', () => {
-      // Arrange
-      spyOn(component, 'getStockAndPrice');
-      spyOn(component, 'getStockAndPriceWithTicker');
-
-      // Act
-      component.ngOnInit();
-
-      // Assert
-      expect(component.getStockAndPrice).toHaveBeenCalled();
-      expect(component.getStockAndPriceWithTicker).toHaveBeenCalled();
-    });
-  });
-
   describe("stock getter", () => {
     it("should return repoService stock value if getWithTicker is false", () => {
       // Arrange
@@ -88,8 +73,8 @@ describe('StockPriceComponent', () => {
 
     it('should call getStockAndPrice if getWithTicker is false', () => {
       // Arrange
-      spyOn(component, 'getStockAndPrice');
-      spyOn(component, 'getStockAndPriceWithTicker');
+      spyOn(component, 'getStockAndPrice').and.returnValue();
+      spyOn(component, 'getStockAndPriceWithTicker').and.returnValue();
       expect(component['getWithTicker']).toBeFalsy();
 
       // Act
@@ -106,8 +91,8 @@ describe('StockPriceComponent', () => {
         index: true
       };
       component.onTabChanged(event);
-      spyOn(component, 'getStockAndPrice');
-      spyOn(component, 'getStockAndPriceWithTicker');
+      spyOn(component, 'getStockAndPrice').and.returnValue();;
+      spyOn(component, 'getStockAndPriceWithTicker').and.returnValue();;
       expect(component['getWithTicker']).toBeTruthy();
 
       // Act
@@ -117,5 +102,67 @@ describe('StockPriceComponent', () => {
       expect(component.getStockAndPrice).not.toHaveBeenCalled();
       expect(component.getStockAndPriceWithTicker).toHaveBeenCalled();
     });
-  })
+  });
+
+  describe('getStockAndPrice', () => {
+    it('should call repoService passing required arguments', () => {
+      // Arrange
+      component.stockId = 123;
+      component.startDate = "2000-01-01";
+      component.endDate = "2001-01-01";
+
+      // Act
+      component.getStockAndPrice();
+
+      // Assert
+      expect(repoServiceSpy.getStockAndPrice).toHaveBeenCalledWith(123, "2000-01-01", "2001-01-01");
+    });
+  });
+
+  describe('getStockAndPriceWithTicker', () => {
+    it('should call repoService passing required arguments', () => {
+      // Arrange
+      component.ticker = "IBM";
+      component.startDate = "2000-01-01";
+      component.endDate = "2001-01-01";
+
+      // Act
+      component.getStockAndPriceWithTicker();
+
+      // Assert
+      expect(repoServiceSpy.getStockAndPriceWithTicker).toHaveBeenCalledWith("IBM", "2000-01-01", "2001-01-01");
+    });
+  });
+
+  describe('startDateSelected', () => {
+    it('should set the startDate to the provided argument', () => {
+      // Arrange
+      component.startDate = "";
+      const newStartDate = "2001-01-01";
+
+      expect(component.startDate).toBe("");
+
+      // Act
+      component.startDateSelected(newStartDate);
+
+      // Assert
+      expect(component.startDate).toBe(newStartDate);
+    });
+  });
+
+  describe('endDateSelected', () => {
+    it('should set the endDate to the provided argument', () => {
+      // Arrange
+      component.endDate = "";
+      const newEndDate = "2001-01-01";
+
+      expect(component.endDate).toBe("");
+
+      // Act
+      component.endDateSelected(newEndDate);
+
+      // Assert
+      expect(component.endDate).toBe(newEndDate);
+    });
+  });
 });
