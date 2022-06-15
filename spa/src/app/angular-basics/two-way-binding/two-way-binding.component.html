@@ -1,7 +1,7 @@
 <app-header [title]="title"></app-header>
 
 <ion-content [fullscreen]="true">
-  <div class="root"></div>
+  <div class="root">
     <form class="example-form">
 
       <mat-form-field class="example-full-width">
@@ -41,4 +41,5 @@
       <p>Close: {{candle.close}}</p>
       <p>Average: {{candleService.avgPrice(candle) | number: "1.1-5"}}</p>
     </div>
+  </div>
 </ion-content>
