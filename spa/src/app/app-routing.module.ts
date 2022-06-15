@@ -7,20 +7,20 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'chapter01',
-    loadChildren: () => import('./chapter01/chapter01.module').then( m => m.Chapter01Module)
+    path: 'basics',
+    loadChildren: () => import('./basics/basics.module').then( m => m.BasicsModule)
   },
   {
-    path: 'chapter02',
-    loadChildren: () => import('./chapter02/chapter02.module').then( m => m.Chapter02Module)
+    path: 'angular-basics',
+    loadChildren: () => import('./angular-basics/angular-basics.module').then( m => m.AngularBasicsModule)
   },
   {
-    path: 'chapter03',
-    loadChildren: () => import('./chapter03/chapter03.module').then( m => m.Chapter03Module)
+    path: 'stock-basics',
+    loadChildren: () => import('./stock-basics/stock-basics.module').then( m => m.StockBasicsModule)
   },
   {
-    path: 'chapter04',
-    loadChildren: () => import('./chapter04/chapter04.module').then( m => m.Chapter04Module)
+    path: 'yahoo-data',
+    loadChildren: () => import('./yahoo-data/yahoo-data.module').then( m => m.YahooDataModule)
   },
   {
     path: '',

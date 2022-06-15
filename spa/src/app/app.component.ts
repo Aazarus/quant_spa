@@ -17,36 +17,36 @@ export class AppComponent {
   public pages: page[] = [
     { title: 'Home', url: '/home', icon: 'home' },
     { 
-      title: 'Chapter 01',
+      title: 'Basics',
       children: [
-        { title: 'Counter', url: '/chapter01/counter' },
-        { title: 'Weather Forecast', url: '/chapter01/fetch-data' }
+        { title: 'Counter', url: '/basics/counter' },
+        { title: 'Weather Forecast', url: '/basics/fetch-data' }
       ]
     },
     {
-      title: 'Chapter 02',
+      title: 'Angular Basics',
       children: [
-        { title: 'Interpolation', url: '/chapter02/interpolation' },
-        { title: 'One Way Binding', url: '/chapter02/one-way-binding' },
-        { title: 'Event Binding', url: '/chapter02/event-binding' },
-        { title: 'Two Way Binding', url: '/chapter02/two-way-binding' },
-        { title: 'Directive Test', url: '/chapter02/directive-test' },
-        { title: 'Input Output', url: '/chapter02/input-output' },
+        { title: 'Interpolation', url: '/angular-basics/interpolation' },
+        { title: 'One Way Binding', url: '/angular-basics/one-way-binding' },
+        { title: 'Event Binding', url: '/angular-basics/event-binding' },
+        { title: 'Two Way Binding', url: '/angular-basics/two-way-binding' },
+        { title: 'Directive Test', url: '/angular-basics/directive-test' },
+        { title: 'Input Output', url: '/angular-basics/input-output' },
       ]
     },
     {
-      title: 'Chapter 03',
+      title: 'Stock Basics',
       children: [
-        { title: 'All Stocks', url: '/chapter03/all-stocks' },
-        { title: 'Stock Price', url: '/chapter03/stock-price' },
-        { title: 'Index Data', url: '/chapter03/index-data' },
-        { title: 'Stock CRUD', url: '/chapter03/stock-crud' },
+        { title: 'All Stocks', url: '/stock-basics/all-stocks' },
+        { title: 'Stock Price', url: '/stock-basics/stock-price' },
+        { title: 'Index Data', url: '/stock-basics/index-data' },
+        { title: 'Stock CRUD', url: '/stock-basics/stock-crud' },
       ]
     },
     {
-      title: 'Chapter 04',
+      title: 'Yahoo Data',
       children: [
-        { title: 'Yahoo Stock', url: '/chapter04/yahoo-stock' },
+        { title: 'Yahoo Stock', url: '/yahoo-data/yahoo-stock' },
       ]
     }
   ];

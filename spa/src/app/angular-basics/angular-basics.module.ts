@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { Chapter02RoutingModule } from './chapter02-routing.module';
+import { AngularBasicsRoutingModule } from './angular-basics-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/material/material.module';
@@ -36,7 +36,7 @@ const components = [
     MaterialModule,
     IonicModule,
     HttpClientModule,
-    Chapter02RoutingModule,
+    AngularBasicsRoutingModule,
     FlexLayoutModule,
     SharedModule
   ],
@@ -51,4 +51,4 @@ const components = [
     CandleService
   ]
 })
-export class Chapter02Module {}
+export class AngularBasicsModule {}

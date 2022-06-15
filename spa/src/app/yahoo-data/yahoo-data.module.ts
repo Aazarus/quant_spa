@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { Chapter04RoutingModule } from './chapter04-routing.module';
+import { YahooDataRoutingModule } from './yahoo-data-routing.module';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DATE_FORMATS } from 'src/app/shared/DateFormat';
@@ -26,7 +26,7 @@ const components = [
     MaterialModule,
     IonicModule,
     HttpClientModule,
-    Chapter04RoutingModule,
+    YahooDataRoutingModule,
     FlexLayoutModule,
     SharedModule,
     ReactiveFormsModule,
@@ -43,4 +43,4 @@ const components = [
     { provide: MAT_DATE_FORMATS, useValue: DATE_FORMATS },
   ]
 })
-export class Chapter04Module {}
+export class YahooDataModule {}

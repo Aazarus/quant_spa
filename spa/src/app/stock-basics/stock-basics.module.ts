@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'src/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { Chapter03RoutingModule } from './chapter03-routing.module';
+import { StockBasicsRoutingModule } from './stock-basics-routing.module';
 import { AllStocksComponent } from './all-stocks/all-stocks.component';
 import { IndexDataComponent } from './index-data/index-data.component';
 import { StockCreateComponent } from './stock-crud/stock-create/stock-create.component';
@@ -37,7 +37,7 @@ const components = [
     MaterialModule,
     IonicModule,
     HttpClientModule,
-    Chapter03RoutingModule,
+    StockBasicsRoutingModule,
     FlexLayoutModule,
     SharedModule,
     ReactiveFormsModule,
@@ -53,4 +53,4 @@ const components = [
   ],
   entryComponents:[StockDeleteDialogComponent]
 })
-export class Chapter03Module {}
+export class StockBasicsModule {}

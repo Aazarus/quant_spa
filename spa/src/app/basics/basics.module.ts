@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { Chapter01RoutingModule } from './chapter01-routing.module';
+import { BasicsRoutingModule } from './basics-routing.module';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CounterComponent } from './counter/counter.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,7 +22,7 @@ const components = [
     MaterialModule,
     IonicModule,
     HttpClientModule,
-    Chapter01RoutingModule,
+    BasicsRoutingModule,
     FlexLayoutModule,
     SharedModule
   ],
@@ -33,4 +33,4 @@ const components = [
     components
   ]
 })
-export class Chapter01Module {}
+export class BasicsModule {}
