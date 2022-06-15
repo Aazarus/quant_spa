@@ -20,14 +20,14 @@ export class YahooStockComponent {
 
   private _marketData: MarketData[] = [];
 
-  constructor(private repository: MarketDataService) { }
+  constructor(private marketRepo: MarketDataService) { }
 
   public get marketData(): MarketData[] {
     return this._marketData;
   }
 
   public async getStock(): Promise<void> {    
-    this.repository.getYahooStockWithResult(this.ticker, this.startDate, this.endDate, this.period)
+    this.marketRepo.getYahooStockWithResult(this.ticker, this.startDate, this.endDate, this.period)
     .subscribe(
       result => this._marketData = result,
       error => console.log("Received an error", error)
