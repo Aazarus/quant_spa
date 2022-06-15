@@ -11,7 +11,7 @@ import * as moment from 'moment';
 export class YahooStockComponent {
 
   public title: string = "Yahoo Stock";
-  public ticker: string = "A";
+  public ticker: string = "";
   public startDate: string;
   public startDateLabel: string = "Select a start date"
   public endDate:string;
@@ -22,7 +22,7 @@ export class YahooStockComponent {
 
   constructor(private repository: MarketDataService) { }
 
-  get marketData(): MarketData[] {
+  public get marketData(): MarketData[] {
     return this._marketData;
   }
 
