@@ -1,4 +1,3 @@
-import { YahooStockComponent } from './yahoo-stock/yahoo-stock.component';
 import { CandleService } from 'src/app/services/candle.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,10 +12,13 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DATE_FORMATS } from 'src/app/shared/DateFormat';
 import { YahooStockTableComponent } from './yahoo-stock/yahoo-stock-table/yahoo-stock-table.component';
+import { YahooStockComponent } from './yahoo-stock/yahoo-stock.component';
+import { YahooStockSaveComponent } from './yahoo-stock-save/yahoo-stock-save.component';
 
 const components = [
   YahooStockComponent,
-  YahooStockTableComponent
+  YahooStockTableComponent,
+  YahooStockSaveComponent
 ];
 
 @NgModule({

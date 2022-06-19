@@ -1,0 +1,74 @@
+<app-header [title]="title"></app-header>
+
+<ion-content>
+  <div class="root" style="margin-bottom: 75px;">
+    
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+
+            <div class="ion-text-center">
+              <h3 style="margin: 25px">
+                Get Stock Data from Yahoo
+              </h3>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-text-center">
+          <ion-col>
+            <form>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <mat-form-field>
+                      <input matInput placeholder="Ticker" [(ngModel)]="ticker" name="ticker">
+                    </mat-form-field>
+                  </ion-col>
+
+                  <ion-col class="ion-align-self-center">
+                    <mat-select placeholder="Select a period" [(value)]="period">
+                      <mat-option value="daily">Daily</mat-option>
+                      <mat-option value="weekly">Weekly</mat-option>
+                      <mat-option value="monthly">Monthly</mat-option>
+                    </mat-select>
+                  </ion-col>
+
+                </ion-row>
+                <ion-row>
+                  <ion-col class="ion-text-center">
+                    <app-date-picker [label]="startDateLabel" (selected)="startDateSelected($event)"></app-date-picker>
+                  </ion-col>
+
+                  <ion-col class="ion-text-center">
+                    <app-date-picker [label]="endDateLabel" (selected)="endDateSelected($event)"></app-date-picker>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <div class="right-align">
+                      <button mat-raised-button color="primary" (click)="getStock()" style="margin: 0px 10px;">Get
+                        Stock Data</button>
+                      <button mat-raised-button color="primary" (click)="saveStock()">Save</button>
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <div *ngIf="!!marketData && !isSaved">
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  
+  <div class="root">
+    <app-yahoo-stock-table [marketData]="marketData"></app-yahoo-stock-table>
+  </div>
+</div>
+</ion-content>
