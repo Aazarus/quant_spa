@@ -1,5 +1,5 @@
 import { IndexData } from 'src/app/models/index-data';
-import { indexDataTestData } from 'src/app/tests/test-data';
+import { indexDataTestData, yahooStockTestData } from 'src/app/tests/test-data';
 import { environment } from 'src/environments/environment.prod';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -16,7 +16,7 @@ describe('RepositoryService', () => {
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
-    const httpClientSpyObj = jasmine.createSpyObj('HttpClient', ['get']);
+    const httpClientSpyObj = jasmine.createSpyObj('HttpClient', ['get', 'post']);
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule
@@ -415,7 +415,22 @@ describe('RepositoryService', () => {
       service.deleteStockWithResult(symbolTestData[0].symbolId);
 
       // Assert
-      expect(httpClientSpy.delete).toHaveBeenCalledWith("https://localhost:7108/api/stocks/1");
+      expect(httpClientSpy.delete).toHaveBeenCalledWith('https://localhost:7108/api/stocks/1');
     });
   });
+
+  describe('addStockPriceWithResult', () => {
+    it('should call http post with the expected url and data', () => {
+
+      // Arrange
+      spyOn(httpClientSpy, 'post');
+      const data = yahooStockTestData
+
+      // Act
+      service.addStockPriceWithResult(data);
+
+      // Assert
+      expect(httpClientSpy.post).toHaveBeenCalledWith('https://localhost:7108/api/add-stock-price', data);
+    });
+  })
 });

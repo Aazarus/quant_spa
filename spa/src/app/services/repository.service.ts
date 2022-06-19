@@ -1,3 +1,4 @@
+import { MarketData } from './../models/market-data';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -143,5 +144,9 @@ export class RepositoryService {
 
   public deleteStockWithResult(id: number): Observable<object> {
     return this.httpClient.delete(this.url + `api/stocks/${id}`);
+  }
+
+  public addStockPriceWithResult(stockData: MarketData[]): Observable<Object> {
+    return this.httpClient.post<MarketData[]>(`${this.url}api/add-stock-price`, stockData);
   }
 }
