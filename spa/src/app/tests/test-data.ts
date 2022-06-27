@@ -148,6 +148,8 @@ export var yahooStockTestData: MarketData[] = [
     }
 ];
 
+export var IexStockTestData = yahooStockTestData;
+
 function getDate(addDays: number) {
     var date = new Date();
     date.setDate(date.getDate() + addDays);
