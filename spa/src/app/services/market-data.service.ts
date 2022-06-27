@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class MarketDataService {
 
   private _yahooStock: MarketData[] = [];
+  private _iexStock: MarketData[] = [];
   private url: string;
   
   constructor(private httpClient: HttpClient) { 
@@ -20,13 +21,28 @@ export class MarketDataService {
     return this._yahooStock;
   }
 
+  public get iexStock(): MarketData[] {
+    return this._iexStock;
+  }
+
   public getYahooStock(ticker: string, start: string, end: string, period: string): void  {
     const apiUrl = `${this.url}api/YahooStock/${ticker}/${start}/${end}/${period}`;
-    this.httpClient.get<MarketData[]>(apiUrl).subscribe(result => this._yahooStock = result);
+    this.httpClient.get<MarketData[]>(apiUrl).subscribe(
+      result => this._yahooStock = result,
+      error => console.log(error)
+    );
   }
 
   public getYahooStockWithResult(ticker: string, start: string, end: string, period: string): Observable<MarketData[]> {
     const apiUrl = `${this.url}api/YahooStock/${ticker}/${start}/${end}/${period}`;
     return this.httpClient.get<MarketData[]>(apiUrl);
+  }
+
+  public getIexStock(ticker: string, range: string): void {
+    const apiUrl = `${this.url}api/IexStock/${ticker}/${range}`;
+    this.httpClient.get<MarketData[]>(apiUrl).subscribe(
+      result => this._iexStock = result,
+      error => console.log(error)
+    );
   }
 }
