@@ -19,8 +19,8 @@ const routes: Routes = [
     loadChildren: () => import('./stock-basics/stock-basics.module').then( m => m.StockBasicsModule)
   },
   {
-    path: 'yahoo-data',
-    loadChildren: () => import('./yahoo-data/yahoo-data.module').then( m => m.YahooDataModule)
+    path: 'stock-data',
+    loadChildren: () => import('./stock-data/stock-data.module').then( m => m.StockDataModule)
   },
   {
     path: '',

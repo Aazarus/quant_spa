@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { YahooStockComponent } from './yahoo-stock/yahoo-stock.component';
-import { YahooStockSaveComponent } from './yahoo-stock-save/yahoo-stock-save.component';
+import { YahooStockComponent } from './yahoo/yahoo-stock/yahoo-stock.component';
+import { YahooStockSaveComponent } from './yahoo/yahoo-stock-save/yahoo-stock-save.component';
 
 const routes: Routes = [
   {
@@ -18,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class YahooDataRoutingModule { }
+export class StockDataRoutingModule { }

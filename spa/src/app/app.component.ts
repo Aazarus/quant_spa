@@ -46,8 +46,8 @@ export class AppComponent {
     {
       title: 'Yahoo Data',
       children: [
-        { title: 'Yahoo Stock', url: '/yahoo-data/yahoo-stock' },
-        { title: 'Yahoo Stock Save', url: '/yahoo-data/yahoo-stock-save' },
+        { title: 'Yahoo Stock', url: '/stock-data/yahoo-stock' },
+        { title: 'Yahoo Stock Save', url: '/stock-data/yahoo-stock-save' },
       ]
     }
   ];
