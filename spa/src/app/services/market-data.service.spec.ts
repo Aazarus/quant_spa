@@ -84,6 +84,21 @@ describe('MarketDataService', () => {
     });
   });
 
+  describe('getYahooStockWithResult', () => {    
+
+    it('should call http get with the expected url', () => {
+
+      // Arrange
+      spyOn(httpClientSpy, 'get');
+
+      // Act
+      service.getYahooStockWithResult("IBM","2010-01-01","2020-01-01","daily");
+
+      // Assert
+      expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/YahooStock/IBM/2010-01-01/2020-01-01/daily");
+    });
+  });
+
   describe('getIexStock', () => {
     it('should set yahooStock with the result of the call', () => {
 
@@ -112,19 +127,21 @@ describe('MarketDataService', () => {
       expect(console.log).toHaveBeenCalled();
     });
   });
-
-  describe('getYahooStockWithResult', () => {    
+  
+  describe('getIexStockWithResult', () => {    
 
     it('should call http get with the expected url', () => {
 
       // Arrange
       spyOn(httpClientSpy, 'get');
+      const ticker = "IBM";
+      const range = "oneMonth"
 
       // Act
-      service.getYahooStockWithResult("IBM","2010-01-01","2020-01-01","daily");
+      service.getIexStockWithResult(ticker, range);
 
       // Assert
-      expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/YahooStock/IBM/2010-01-01/2020-01-01/daily");
+      expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/IexStock/IBM/oneMonth");
     });
   });
 });

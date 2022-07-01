@@ -45,4 +45,9 @@ export class MarketDataService {
       error => console.log(error)
     );
   }
+
+  public getIexStockWithResult(ticker: string, range: string): Observable<MarketData[]> {
+    const apiUrl = `${this.url}api/IexStock/${ticker}/${range}`;
+    return this.httpClient.get<MarketData[]>(apiUrl);
+  }
 }
