@@ -14,11 +14,13 @@ import { StockTableComponent } from './stock-table/stock-table.component';
 import { YahooStockComponent } from './yahoo/yahoo-stock/yahoo-stock.component';
 import { YahooStockSaveComponent } from './yahoo/yahoo-stock-save/yahoo-stock-save.component';
 import { StockDataRoutingModule } from './stock-data-routing.module';
+import { IexStockComponent } from './iex/iex-stock/iex-stock.component';
 
 const components = [
   YahooStockComponent,
   StockTableComponent,
-  YahooStockSaveComponent
+  YahooStockSaveComponent,
+  IexStockComponent
 ];
 
 @NgModule({
