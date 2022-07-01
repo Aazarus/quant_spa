@@ -1,4 +1,4 @@
-import { MarketDataService } from './../../services/market-data.service';
+import { MarketDataService } from 'src/app/services/market-data.service';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
