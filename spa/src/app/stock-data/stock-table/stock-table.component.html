@@ -33,7 +33,7 @@
           <mat-cell *matCellDef="let item">{{item.close}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="closeAdj">
+        <ng-container matColumnDef="closeAdj" *ngIf="includeCloseAdj">
           <mat-header-cell *matHeaderCellDef>Close Adj</mat-header-cell>
           <mat-cell *matCellDef="let item">{{item.closeAdj}}</mat-cell>
         </ng-container>
@@ -45,7 +45,6 @@
 
         <mat-header-row *matHeaderRowDef="displayedCols"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedCols;"></mat-row>
-
       </table>
     </div>
   </div>
