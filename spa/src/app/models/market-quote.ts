@@ -1,0 +1,28 @@
+export interface MarketQuote  { 
+    ticker: string;
+    open?: number;
+    openTime?: Date;
+    close?: number;
+    closeTime?: Date;
+    latestPrice?: number;
+    latestTime?: Date;
+    latestUpdateTime?: Date;
+    latestVolume?: number;
+    delayedPrice?: number;
+    delayedPriceTime?: Date;
+    previousClose?: number;
+    iexRealTimePrice?: number;
+    iexRealTimeSize?: number;
+    iexLastUpdated?: Date;
+    iexBidPrice?: number;
+    iexBidSize?: number;
+    iexAskPrice?: number;
+    iexAskSize?: number;
+    change?: number;
+    changePercent?: number;
+    marketCap?: number;
+    PeRatio?: number;
+    week52High?: number;
+    week52Low?: number;
+    ytdChange?: number;
+};
