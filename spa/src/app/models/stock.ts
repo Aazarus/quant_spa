@@ -1,8 +1,8 @@
 export default interface Stock {
-    id:number,
-    ticker: string,
-    price: number,
-    holdStock: boolean
+    id:number;
+    ticker: string;
+    price: number;
+    holdStock: boolean;
 }
 
 export function defaultStocks(): Stock[] {
