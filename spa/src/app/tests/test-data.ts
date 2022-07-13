@@ -2,6 +2,7 @@ import { IndexData } from 'src/app/models/index-data';
 import { Symbol } from 'src/app/models/symbol';
 import { Price } from 'src/app/models/price';
 import { MarketData } from 'src/app/models/market-data';
+import { MarketQuote } from 'src/app/models/market-quote';
 
 export var symbolTestData: Symbol[] = [
     { ticker: "IBM", region: "US", sector: "Information Technology", symbolId: 1 },
@@ -149,6 +150,35 @@ export var yahooStockTestData: MarketData[] = [
 ];
 
 export var IexStockTestData = yahooStockTestData;
+
+export var IexQuoteTestData: MarketQuote = {
+    ticker: "IBM",
+    open: 140.78,
+    openTime: new Date(1657546201086),
+    close: 140.99,
+    closeTime: new Date(1657569596227),
+    latestPrice: 141,
+    latestTime: new Date("July 11, 2022"),
+    latestUpdateTime: new Date(1657569602157),
+    latestVolume: null,
+    delayedPrice: null,
+    delayedPriceTime: new Date(1657569599993),
+    previousClose: 140.47,
+    iexRealTimePrice: 140.99,
+    iexRealTimeSize: 100,
+    iexLastUpdated: new Date(1657569596227),
+    iexBidPrice: 0,
+    iexBidSize: 0,
+    iexAskPrice: 0,
+    iexAskSize: 0,
+    change: 0.53,
+    changePercent: 0.04435251961671668,
+    marketCap: 126820380825,
+    PeRatio: 22.89,
+    week52High: 144.73,
+    week52Low: 111.84,
+    ytdChange: 0.0802814805155791
+};
 
 function getDate(addDays: number) {
     var date = new Date();
