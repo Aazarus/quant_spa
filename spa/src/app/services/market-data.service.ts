@@ -1,3 +1,4 @@
+import { MarketQuote } from './../models/market-quote';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MarketData } from 'src/app/models/market-data';
@@ -11,6 +12,7 @@ export class MarketDataService {
 
   private _yahooStock: MarketData[] = [];
   private _iexStock: MarketData[] = [];
+  private _iexQuote: MarketQuote;
   private url: string;
   
   constructor(private httpClient: HttpClient) { 
@@ -23,6 +25,10 @@ export class MarketDataService {
 
   public get iexStock(): MarketData[] {
     return this._iexStock;
+  }
+
+  public get iexQuote(): MarketQuote {
+    return this._iexQuote;
   }
 
   public getYahooStock(ticker: string, start: string, end: string, period: string): void  {
@@ -49,5 +55,18 @@ export class MarketDataService {
   public getIexStockWithResult(ticker: string, range: string): Observable<MarketData[]> {
     const apiUrl = `${this.url}api/IexStock/${ticker}/${range}`;
     return this.httpClient.get<MarketData[]>(apiUrl);
+  }
+
+  public getIexQuote(ticker: string): void {
+    const apiUrl = `${this.url}api/IexQuote/${ticker}`;
+    this.httpClient.get<MarketQuote>(apiUrl).subscribe(
+      result => this._iexQuote = result,
+      error => console.log(error)
+    );
+  }
+
+  public getIexQuoteWithResult(ticker: string): Observable<MarketQuote> {
+    const apiUrl = `${this.url}api/IexQuote/${ticker}`;
+    return this.httpClient.get<MarketQuote>(apiUrl);
   }
 }

@@ -1,4 +1,4 @@
-import { IexStockTestData, yahooStockTestData } from 'src/app/tests/test-data';
+import { IexStockTestData, yahooStockTestData, IexQuoteTestData } from 'src/app/tests/test-data';
 import { environment } from 'src/environments/environment.prod';
 import { TestBed } from '@angular/core/testing';
 import { MarketDataService } from './market-data.service';
@@ -142,6 +142,51 @@ describe('MarketDataService', () => {
 
       // Assert
       expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/IexStock/IBM/oneMonth");
+    });
+  });
+  
+  describe('getIexQuote', () => {
+    it('should set IexQupte with the result of the call', () => {
+
+      // Arrange
+      spyOn(httpClientSpy, 'get').and.returnValue(of(IexQuoteTestData));
+
+      // Act
+      service.getIexQuote("IBM");
+
+      // Assert
+      expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/IexQuote/IBM");
+      expect(service.iexQuote).toEqual(IexQuoteTestData);
+    });
+    
+    // This can be improved to log the error to a third party service for monitoring
+    it('should console.log error', () => {
+      // Arrange
+      spyOn(console, 'log');
+      spyOn(httpClientSpy, 'get').and.returnValue(throwError(""));
+
+      // Act
+      service.getIexQuote("IBM");
+
+      // Assert
+      expect(httpClientSpy.get).toHaveBeenCalled();
+      expect(console.log).toHaveBeenCalled();
+    });
+  });
+  
+  describe('getIexStockWithResult', () => {    
+
+    it('should call http get with the expected url', () => {
+
+      // Arrange
+      spyOn(httpClientSpy, 'get');
+      const ticker = "IBM";
+
+      // Act
+      service.getIexQuoteWithResult(ticker);
+
+      // Assert
+      expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/IexQuote/IBM");
     });
   });
 });
