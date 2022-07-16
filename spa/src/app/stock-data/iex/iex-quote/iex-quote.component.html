@@ -2,5 +2,44 @@
 
 <ion-content [fullscreen]="true">
   <div style="overflow-x:auto" class="root">
+
+    <mat-form-field>
+      <input matInput placeholder="ticker" [(ngModel)]="ticker" name="ticker">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="getQuote()">Get Stock Quote</button>
+
+    <div *ngIf="data">
+      <h4>Stock Quote</h4>
+
+      <ul>
+        <li>Ticker: {{data.ticker}}</li>
+        <li>Open: {{data.open}}</li>
+        <li>Open time: {{data.openTime}}</li>
+        <li>Close: {{data.close}}</li>
+        <li>Close Time: {{data.closeTime}}</li>
+        <li>Latest Price: {{data.latestPrice}}</li>
+        <li>Latest Time: {{data.latestTime}}</li>
+        <li>Latest Update Time: {{data.latestUpdateTime}}</li>
+        <li>Latest Volume: {{data.latestVolume}}</li>      
+        <li>Delayed Price: {{data.delayedPrice}}</li>
+        <li>Delayed Price Time: {{data.delayedPriceTime}}</li>
+        <li>Previous Close: {{data.previousClose}}</li>
+        <li>IEX Real-Time Price: {{data.iexRealTimePrice}}</li>
+        <li>IEX Real-Time Size: {{data.iexRealTimeSize}}</li>
+        <li>IEX Last Updated: {{data.iexLastUpdated}}</li>
+        <li>IEX Bid Price: {{data.iexBidPrice}}</li>
+        <li>IEX Bid Size: {{data.iexBidSize}}</li>
+        <li>IEX Ask Price: {{data.iexAskPrice}}</li>
+        <li>IEX Ask Size: {{data.iexAskSize}}</li>
+        <li>Change: {{data.change}}</li>
+        <li>Change Percent: {{data.changePercent}}</li>
+        <li>Market Cap: {{data.marketCap}}</li>
+        <li>PE Ratio: {{data.PeRatio}}</li>
+        <li>52 Week High: {{data.week52High}}</li>
+        <li>52 Week Low: {{data.week52Low}}</li>
+        <li>Year-To-Date: {{data.ytdChange}}</li>
+      </ul>
+    </div>
   </div>
 </ion-content>
