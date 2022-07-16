@@ -24,7 +24,7 @@ export class IexStockComponent {
     return this._marketData;
   }
 
-  public async getStock(): Promise<void> {
+  public getStock(): void {
     this.isLoading = true;
     this.marketRepo.getIexStockWithResult(this.ticker, this.range).subscribe(
       result => {

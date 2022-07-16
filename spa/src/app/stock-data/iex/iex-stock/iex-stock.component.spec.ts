@@ -51,7 +51,7 @@ describe('IexStockComponent', () => {
   });
 
   describe('getStock', () => {
-    it('should call repository getIexStock and assign successful result', async () => {
+    it('should call repository getIexStock and assign successful result', () => {
       // Arrange
       component.ticker = "IBM";
       component.range = "oneMonth";
@@ -61,7 +61,7 @@ describe('IexStockComponent', () => {
       expect(component.stock).toEqual([]);
 
       // Act
-      await component.getStock();
+      component.getStock();
 
       // Assert
       expect(marketRepoServiceSpy.getIexStockWithResult).toHaveBeenCalled();
@@ -69,7 +69,7 @@ describe('IexStockComponent', () => {
     });
 
     // This can be improved to log the error to a third party service for monitoring
-    it('should console.log error', async () => {
+    it('should console.log error', () => {
       // Arrange
       component.ticker = "IBM";
       component.range = "oneMonth";
@@ -77,7 +77,7 @@ describe('IexStockComponent', () => {
       marketRepoServiceSpy.getIexStockWithResult.and.returnValue(throwError(""));
 
       // Act
-      await component.getStock();
+      component.getStock();
 
       // Assert
       expect(marketRepoServiceSpy.getIexStockWithResult).toHaveBeenCalled();
