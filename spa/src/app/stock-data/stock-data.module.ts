@@ -1,3 +1,4 @@
+import { IexQuoteComponent } from './iex/iex-quote/iex-quote.component';
 import { CandleService } from 'src/app/services/candle.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,7 +21,8 @@ const components = [
   YahooStockComponent,
   StockTableComponent,
   YahooStockSaveComponent,
-  IexStockComponent
+  IexStockComponent,
+  IexQuoteComponent
 ];
 
 @NgModule({
