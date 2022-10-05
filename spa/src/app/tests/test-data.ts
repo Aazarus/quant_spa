@@ -180,6 +180,49 @@ export var IexQuoteTestData: MarketQuote = {
     ytdChange: 0.0802814805155791
 };
 
+export var AvStockTestData: MarketData[] = [    
+    {
+        ticker: "IBM",
+        date: getDate(-365),
+        open: 123.321,
+        high: 124.321,
+        low: 122.021,
+        close: 124.320,
+        closeAdj: 124.0,
+        volume: 32425284
+    },
+    {
+        ticker: "IBM",
+        date: getDate(-364),
+        open: 124.320,
+        high: 125.81,
+        low: 122.021,
+        close: 125.30,
+        closeAdj: 125.0,
+        volume: 32443284
+    },
+    {
+        ticker: "IBM",
+        date: getDate(-363),
+        open: 125.30,
+        high:125.481,
+        low:123.021,
+        close: 124.30,
+        closeAdj: 124.0,
+        volume: 31425284
+    },
+    {
+        ticker: "IBM",
+        date: getDate(-362),
+        open: 124.30,
+        high: 126.481,
+        low: 122.021,
+        close: 124.30,
+        closeAdj: 123.5,
+        volume: 41425284
+    }
+];
+
 function getDate(addDays: number) {
     var date = new Date();
     date.setDate(date.getDate() + addDays);
