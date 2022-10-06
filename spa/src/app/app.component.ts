@@ -50,6 +50,7 @@ export class AppComponent {
         { title: 'Yahoo Stock Save', url: '/stock-data/yahoo-stock-save' },
         { title: 'IEX Stock', url: '/stock-data/iex-stock' },
         { title: 'IEX Quote', url: '/stock-data/iex-quote' },
+        { title: 'AV Stock', url: '/stock-data/av-stock' },
       ]
     }
   ];

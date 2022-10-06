@@ -1,3 +1,4 @@
+import { AvStockComponent } from './alpha-vantage/av-stock/av-stock.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { YahooStockComponent } from './yahoo/yahoo-stock/yahoo-stock.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'iex-quote',
     component: IexQuoteComponent
+  },
+  {
+    path: 'av-stock',
+    component: AvStockComponent
   }
 ];
 
