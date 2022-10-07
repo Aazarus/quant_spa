@@ -1,3 +1,4 @@
+import { AvBarComponent } from './alpha-vantage/av-bar/av-bar.component';
 import { AvStockComponent } from './alpha-vantage/av-stock/av-stock.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'av-stock',
     component: AvStockComponent
+  },
+  {
+    path: 'av-bar',
+    component: AvBarComponent
   }
 ];
 

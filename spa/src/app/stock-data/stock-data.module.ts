@@ -1,3 +1,4 @@
+import { AvBarComponent } from './alpha-vantage/av-bar/av-bar.component';
 import { AvStockComponent } from './alpha-vantage/av-stock/av-stock.component';
 import { IexQuoteComponent } from './iex/iex-quote/iex-quote.component';
 import { CandleService } from 'src/app/services/candle.service';
@@ -24,7 +25,8 @@ const components = [
   YahooStockSaveComponent,
   IexStockComponent,
   IexQuoteComponent,
-  AvStockComponent
+  AvStockComponent,
+  AvBarComponent
 ];
 
 @NgModule({

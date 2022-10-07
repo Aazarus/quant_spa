@@ -51,6 +51,7 @@ export class AppComponent {
         { title: 'IEX Stock', url: '/stock-data/iex-stock' },
         { title: 'IEX Quote', url: '/stock-data/iex-quote' },
         { title: 'AV Stock', url: '/stock-data/av-stock' },
+        { title: 'AV Bar', url: '/stock-data/av-bar' },
       ]
     }
   ];
