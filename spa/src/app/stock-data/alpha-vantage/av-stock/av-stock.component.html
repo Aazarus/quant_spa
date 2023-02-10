@@ -46,22 +46,22 @@
                 </ion-row>
               <ion-row class="ion-text-center">
                 <ion-col>
-                  <button 
-                    mat-raised-button 
-                    color="primary" 
-                    class="right-align stock-button" 
-                    (click)="getStock()" 
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    class="right-align stock-button"
+                    (click)="getStock()"
                     disabled="true"
                   >
                     Get Stock Data
                   </button>
-                </ion-col>                
+                </ion-col>
               </ion-row>
               <ion-row>
                 <ion-col>
                   <div><ion-text color="danger">**DISABLED**</ion-text></div>
                   <div><ion-text color="danger"><sub>**This is now a Premium request with AlphaVantage.**</sub></ion-text></div>
-                </ion-col>                
+                </ion-col>
               </ion-row>
               </ion-grid>
             </form>
@@ -72,8 +72,8 @@
 
   </div>
 
-  
+
   <div class="root">
-    <app-yahoo-stock-table [marketData]="stock" [includeCloseAdj]="false"></app-yahoo-stock-table>
+    <app-stock-table [marketData]="stock" [includeCloseAdj]="false"></app-stock-table>
   </div>
 </ion-content>

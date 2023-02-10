@@ -46,7 +46,7 @@
                   </ion-col>
                 </ion-row>
               </ion-grid>
-              <div> 
+              <div>
                 <button mat-raised-button color="primary" class="right-align stock-button" (click)="getStock()">Get
                   Stock Data</button>
               </div>
@@ -59,7 +59,7 @@
   </div>
 
   <div class="root">
-    <app-yahoo-stock-table [marketData]="marketData"></app-yahoo-stock-table>
+    <app-stock-table [marketData]="marketData"></app-stock-table>
   </div>
 
 </ion-content>
