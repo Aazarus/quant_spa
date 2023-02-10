@@ -10,7 +10,7 @@
 
             <div class="ion-text-center">
               <h3 style="margin: 25px">
-                Get Stock Data from Yahoo
+                Get Stock Data from IEX
               </h3>
             </div>
           </ion-col>
@@ -44,12 +44,12 @@
 
                 </ion-row>
               </ion-grid>
-              <div> 
+              <div>
                 <button mat-raised-button color="primary" class="right-align stock-button" (click)="getStock()">
                   <div *ngIf="!isLoading;else loadingSpinner">
                     Get Stock Data
                   </div>
-                  <ng-template #loadingSpinner>        
+                  <ng-template #loadingSpinner>
                     <ion-spinner></ion-spinner>
                   </ng-template>
                 </button>
