@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { MarketData } from 'src/app/models/market-data';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AvQuote } from '../models/av-quote';
 
 @Injectable({
   providedIn: 'root'
@@ -96,5 +97,10 @@ export class MarketDataService {
   public getAvStockBar(ticker: string, interval: string, outputSize: string): Observable<MarketData[]> {
     const apiUrl = `${this.url}api/avbar/${ticker}/${interval}/${outputSize}`;
     return this.httpClient.get<MarketData[]>(apiUrl);
+  }
+
+  public getAvQuote(ticker: string): Observable<AvQuote> {
+    const apiUrl = `${this.url}api/avquote/${ticker}`;
+    return this.httpClient.get<AvQuote>(apiUrl);
   }
 }
