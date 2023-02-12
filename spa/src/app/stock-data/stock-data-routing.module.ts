@@ -1,3 +1,4 @@
+import { AvQuoteComponent } from './alpha-vantage/av-quote/av-quote.component';
 import { AvBarComponent } from './alpha-vantage/av-bar/av-bar.component';
 import { AvStockComponent } from './alpha-vantage/av-stock/av-stock.component';
 import { NgModule } from '@angular/core';
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'av-bar',
     component: AvBarComponent
+  },
+  {
+    path: 'av-quote',
+    component: AvQuoteComponent
   }
 ];
 

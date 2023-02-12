@@ -1,0 +1,137 @@
+<app-header [title]="title"></app-header>
+
+<ion-content [fullscreen]="true">
+  <div style="overflow-x:auto" class="root">
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+
+            <div class="ion-text-center">
+              <h3 style="margin: 25px">
+                Get Stock Quote from AlphaVantage
+              </h3>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-text-center">
+          <ion-col>
+            <form>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <mat-form-field>
+                      <input matInput placeholder="Ticker" [(ngModel)]="ticker" name="ticker">
+                    </mat-form-field>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+
+                    <button mat-raised-button color="primary" class="right-align stock-button" (click)="getQuote()">
+                      <div *ngIf="!isLoading;else loadingSpinner">
+                        Get Stock Data
+                      </div>
+                      <ng-template #loadingSpinner>
+                        <ion-spinner></ion-spinner>
+                      </ng-template>
+                    </button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </form>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="!!quote" class="ion-text-center">
+          <ion-col>
+
+            <ion-row>
+              <ion-col>
+                <mat-form-field>
+                  <input matInput placeholder="Ticker" [ngModel]="quote.ticker" name="quoteTicker" [disabled]="true">
+                </mat-form-field>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <mat-form-field>
+                  <input matInput placeholder="Timestamp" [ngModel]="quote.timeStamp | date: 'yyyy-MM-dd HH:mm'" name="timestamp" [disabled]="true">
+
+                </mat-form-field>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <mat-form-field>
+                  <input matInput placeholder="Open" [ngModel]="quote.open" name="open" [disabled]="true">
+                </mat-form-field>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <mat-form-field>
+                  <input matInput placeholder="High" [ngModel]="quote.high" name="high" [disabled]="true">
+                </mat-form-field>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <mat-form-field>
+                  <input matInput placeholder="Low" [ngModel]="quote.low" name="low" [disabled]="true">
+                </mat-form-field>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <mat-form-field>
+                  <input matInput placeholder="Price" [ngModel]="quote.price" name="price" [disabled]="true">
+                </mat-form-field>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <mat-form-field>
+                  <input matInput placeholder="Volume" [ngModel]="quote.volume" name="volume" [disabled]="true">
+                </mat-form-field>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <mat-form-field>
+                  <input matInput placeholder="Previous Price" [ngModel]="quote.prevClose" name="previousPrice" [disabled]="true">
+                </mat-form-field>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <mat-form-field>
+                  <input matInput placeholder="Change" [ngModel]="quote.change" name="change" [disabled]="true">
+                </mat-form-field>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <mat-form-field>
+                  <input matInput placeholder="Change Percent" [ngModel]="quote.changePercent" name="changePercent" [disabled]="true">
+                </mat-form-field>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
+

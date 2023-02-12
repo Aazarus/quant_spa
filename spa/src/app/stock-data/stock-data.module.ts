@@ -1,3 +1,4 @@
+import { AvQuoteComponent } from './alpha-vantage/av-quote/av-quote.component';
 import { AvBarComponent } from './alpha-vantage/av-bar/av-bar.component';
 import { AvStockComponent } from './alpha-vantage/av-stock/av-stock.component';
 import { IexQuoteComponent } from './iex/iex-quote/iex-quote.component';
@@ -26,7 +27,8 @@ const components = [
   IexStockComponent,
   IexQuoteComponent,
   AvStockComponent,
-  AvBarComponent
+  AvBarComponent,
+  AvQuoteComponent
 ];
 
 @NgModule({
