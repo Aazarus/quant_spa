@@ -16,7 +16,7 @@ export class AppComponent {
 
   public pages: page[] = [
     { title: 'Home', url: '/home', icon: 'home' },
-    { 
+    {
       title: 'Basics',
       children: [
         { title: 'Counter', url: '/basics/counter' },
@@ -53,6 +53,7 @@ export class AppComponent {
         { title: 'AV Stock', url: '/stock-data/av-stock' },
         { title: 'AV Bar', url: '/stock-data/av-bar' },
         { title: 'AV Quote', url: '/stock-data/av-quote' },
+        { title: 'AV FX', url: '/stock-data/av-fx' },
       ]
     }
   ];
