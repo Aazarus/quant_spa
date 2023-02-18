@@ -1,3 +1,4 @@
+import { AvSectorComponent } from './alpha-vantage/av-sector/av-sector.component';
 import { AvFxComponent } from './alpha-vantage/av-fx/av-fx.component';
 import { AvQuoteComponent } from './alpha-vantage/av-quote/av-quote.component';
 import { AvBarComponent } from './alpha-vantage/av-bar/av-bar.component';
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'av-fx-bar',
     component: AvFxBarComponent
+  },
+  {
+    path: 'av-sector',
+    component: AvSectorComponent
   }
 ];
 
