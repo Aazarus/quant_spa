@@ -1,11 +1,11 @@
-import { MarketQuote } from './../models/market-quote';
+import { MarketQuote } from 'src/app/models/market-quote';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MarketData } from 'src/app/models/market-data';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AvQuote } from '../models/av-quote';
-import { AvFxData } from '../models/av-fx-data';
+import { AvQuote } from 'src/app/models/av-quote';
+import { FxData } from 'src/app/models/fx-data';
 
 @Injectable({
   providedIn: 'root'
@@ -105,8 +105,8 @@ export class MarketDataService {
     return this.httpClient.get<AvQuote>(apiUrl);
   }
 
-  public getAvFx(ticker: string, start: string, end: string, period: string): Observable<AvFxData[]> {
-    const apiUrl = `${this.url}api/avfxeod/${ticker}/${start}/${end}/${period}`;
-    return this.httpClient.get<AvFxData[]>(apiUrl);
+  public getAvFx(ticker: string, start: string, period: string): Observable<FxData[]> {
+    const apiUrl = `${this.url}api/avfxeod/${ticker}/${start}/${period}`;
+    return this.httpClient.get<FxData[]>(apiUrl);
   }
 }
