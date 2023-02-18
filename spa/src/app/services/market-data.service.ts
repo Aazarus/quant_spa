@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AvQuote } from 'src/app/models/av-quote';
 import { FxData } from 'src/app/models/fx-data';
+import { AvSectorPerf } from '../models/av-sector-perf';
 
 @Injectable({
   providedIn: 'root'
@@ -113,5 +114,10 @@ export class MarketDataService {
   public getAvFxBar(ticker: string, interval: string, outputSize: string): Observable<FxData[]> {
     const apiUrl = `${this.url}avfxbar/${ticker}/${interval}/${outputSize}`;
     return this.httpClient.get<FxData[]>(apiUrl);
+  }
+
+  public getAvSectorPerformance(): Observable<AvSectorPerf[]> {
+    const apiUrl = `${this.url}avsector/perf`;
+    return this.httpClient.get<AvSectorPerf[]>(apiUrl);
   }
 }
