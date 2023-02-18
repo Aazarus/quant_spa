@@ -1,38 +1,38 @@
-<h3 *ngIf="!!title && !!fxData">{{title}} Price</h3>
+<div *ngIf="!!title && !!fxData && fxData.length > 0">
+  <h3>{{title}} Prices</h3>
 
-<div *ngIf="!!fxData && fxData.length > 0">
-  <h4>Prices:</h4>
+  <div>
+      <div style="overflow-x:scroll;">
+        <table mat-table [dataSource]="fxData">
 
-    <div style="overflow-x:scroll;">
-      <table mat-table [dataSource]="fxData">
+          <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.date | date: 'dd/MM/yyyy'}}</mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="date">
-          <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
-          <mat-cell *matCellDef="let item">{{item.date | date: 'dd/MM/yyyy'}}</mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="open">
+            <mat-header-cell *matHeaderCellDef>Open</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.open}}</mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="open">
-          <mat-header-cell *matHeaderCellDef>Open</mat-header-cell>
-          <mat-cell *matCellDef="let item">{{item.open}}</mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="high">
+            <mat-header-cell *matHeaderCellDef>High</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.high}}</mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="high">
-          <mat-header-cell *matHeaderCellDef>High</mat-header-cell>
-          <mat-cell *matCellDef="let item">{{item.high}}</mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="low">
+            <mat-header-cell *matHeaderCellDef>Low</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.low}}</mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="low">
-          <mat-header-cell *matHeaderCellDef>Low</mat-header-cell>
-          <mat-cell *matCellDef="let item">{{item.low}}</mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="close">
+            <mat-header-cell *matHeaderCellDef>Close</mat-header-cell>
+            <mat-cell *matCellDef="let item">{{item.close}}</mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="close">
-          <mat-header-cell *matHeaderCellDef>Close</mat-header-cell>
-          <mat-cell *matCellDef="let item">{{item.close}}</mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedCols"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedCols;"></mat-row>
-      </table>
-    </div>
+          <mat-header-row *matHeaderRowDef="displayedCols"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedCols;"></mat-row>
+        </table>
+      </div>
+  </div>
 </div>
