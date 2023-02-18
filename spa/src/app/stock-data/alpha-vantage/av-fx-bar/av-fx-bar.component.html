@@ -3,6 +3,82 @@
 <ion-content [fullscreen]="true">
   <div style="overflow-x:auto" class="root">
     <div>
+
+      <ion-grid>
+        <form>
+          <ion-row>
+            <ion-col>
+
+              <div class="ion-text-center">
+                <h3 style="margin: 25px;">
+                  Get Intraday Forex Data from AlphaVantage
+                </h3>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col class="ion-align-self-center">
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Ticker"
+                  [(ngModel)]="ticker"
+                  name="ticker"
+                />
+              </mat-form-field>
+            </ion-col>
+
+            <ion-col class="ion-align-self-center">
+
+              <mat-select placeholder="Select an interval" [(ngModel)]="interval" name="interval">
+                <mat-option value="1">1 Minute</mat-option>
+                <mat-option value="5">5 Minute</mat-option>
+                <mat-option value="15">15 Minute</mat-option>
+                <mat-option value="30">30 Minute</mat-option>
+                <mat-option value="60">60 Minute</mat-option>
+              </mat-select>
+
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col class="ion-align-self-center">
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Output Size"
+                  [(ngModel)]="outputSize"
+                  name="outputSize"
+                />
+              </mat-form-field>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <button
+                mat-raised-button
+                color="primary"
+                class="right-align stock-button"
+                (click)="getFxBarData()"
+                [disabled]="isFormValid"
+              >Get Fx Bar Data</button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <div><ion-text color="danger">**DISABLED**</ion-text></div>
+              <div><ion-text color="danger"><sub>**This is now a Premium request with AlphaVantage.**</sub></ion-text></div>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>
     </div>
+  </div>
+
+  <div class="root">
+    <app-fx-table [fxData]="marketData" [title]="ticker"></app-fx-table>
   </div>
 </ion-content>
