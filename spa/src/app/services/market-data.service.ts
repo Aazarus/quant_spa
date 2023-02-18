@@ -20,7 +20,7 @@ export class MarketDataService {
   private url: string;
 
   constructor(private httpClient: HttpClient) {
-    this.url = environment.baseUrl;
+    this.url = `${environment.baseUrl}api/`;
   }
 
   public get yahooStock(): MarketData[] {
@@ -44,7 +44,7 @@ export class MarketDataService {
   }
 
   public getYahooStock(ticker: string, start: string, end: string, period: string): void  {
-    const apiUrl = `${this.url}api/YahooStock/${ticker}/${start}/${end}/${period}`;
+    const apiUrl = `${this.url}YahooStock/${ticker}/${start}/${end}/${period}`;
     this.httpClient.get<MarketData[]>(apiUrl).subscribe(
       result => this._yahooStock = result,
       error => console.log(error)
@@ -52,12 +52,12 @@ export class MarketDataService {
   }
 
   public getYahooStockWithResult(ticker: string, start: string, end: string, period: string): Observable<MarketData[]> {
-    const apiUrl = `${this.url}api/YahooStock/${ticker}/${start}/${end}/${period}`;
+    const apiUrl = `${this.url}YahooStock/${ticker}/${start}/${end}/${period}`;
     return this.httpClient.get<MarketData[]>(apiUrl);
   }
 
   public getIexStock(ticker: string, range: string): void {
-    const apiUrl = `${this.url}api/IexStock/${ticker}/${range}`;
+    const apiUrl = `${this.url}IexStock/${ticker}/${range}`;
     this.httpClient.get<MarketData[]>(apiUrl).subscribe(
       result => this._iexStock = result,
       error => console.log(error)
@@ -65,12 +65,12 @@ export class MarketDataService {
   }
 
   public getIexStockWithResult(ticker: string, range: string): Observable<MarketData[]> {
-    const apiUrl = `${this.url}api/IexStock/${ticker}/${range}`;
+    const apiUrl = `${this.url}IexStock/${ticker}/${range}`;
     return this.httpClient.get<MarketData[]>(apiUrl);
   }
 
   public getIexQuote(ticker: string): void {
-    const apiUrl = `${this.url}api/IexQuote/${ticker}`;
+    const apiUrl = `${this.url}IexQuote/${ticker}`;
     this.httpClient.get<MarketQuote>(apiUrl).subscribe(
       result => this._iexQuote = result,
       error => console.log(error)
@@ -78,12 +78,12 @@ export class MarketDataService {
   }
 
   public getIexQuoteWithResult(ticker: string): Observable<MarketQuote> {
-    const apiUrl = `${this.url}api/IexQuote/${ticker}`;
+    const apiUrl = `${this.url}IexQuote/${ticker}`;
     return this.httpClient.get<MarketQuote>(apiUrl);
   }
 
   public getAvEODStock(ticker: string, start: string, end: string, period: string): void {
-    const apiUrl = `${this.url}api/AvEOD/${ticker}/${start}/${end}/${period}`;
+    const apiUrl = `${this.url}AvEOD/${ticker}/${start}/${end}/${period}`;
     this.httpClient.get<MarketData[]>(apiUrl).subscribe(
       result => this._avStock = result,
       error => console.log(error)
@@ -91,22 +91,22 @@ export class MarketDataService {
   }
 
   public getAvEODStockWithResult(ticker: string, start: string, end: string, period: string): Observable<MarketData[]> {
-    const apiUrl = `${this.url}api/AvEOD/${ticker}/${start}/${end}/${period}`;
+    const apiUrl = `${this.url}AvEOD/${ticker}/${start}/${end}/${period}`;
     return this.httpClient.get<MarketData[]>(apiUrl);
   }
 
   public getAvStockBar(ticker: string, interval: string, outputSize: string): Observable<MarketData[]> {
-    const apiUrl = `${this.url}api/avbar/${ticker}/${interval}/${outputSize}`;
+    const apiUrl = `${this.url}avbar/${ticker}/${interval}/${outputSize}`;
     return this.httpClient.get<MarketData[]>(apiUrl);
   }
 
   public getAvQuote(ticker: string): Observable<AvQuote> {
-    const apiUrl = `${this.url}api/avquote/${ticker}`;
+    const apiUrl = `${this.url}avquote/${ticker}`;
     return this.httpClient.get<AvQuote>(apiUrl);
   }
 
   public getAvFx(ticker: string, start: string, period: string): Observable<FxData[]> {
-    const apiUrl = `${this.url}api/avfxeod/${ticker}/${start}/${period}`;
+    const apiUrl = `${this.url}avfxeod/${ticker}/${start}/${period}`;
     return this.httpClient.get<FxData[]>(apiUrl);
   }
 }
