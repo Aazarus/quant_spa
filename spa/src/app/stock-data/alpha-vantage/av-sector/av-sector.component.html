@@ -2,6 +2,96 @@
 
 <ion-content [fullscreen]="true">
   <div style="overflow-x:auto" class="root">
+    <ion-grid>
 
+      <ion-row>
+        <ion-col>
+          <button mat-raised-button color="primary" class="right-align stock-button" (click)="getSector()">
+            <div *ngIf="!isLoading;else loadingSpinner">
+              Get Stock Data
+            </div>
+            <ng-template #loadingSpinner>
+              <ion-spinner></ion-spinner>
+            </ng-template>
+          </button>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+
+        <ion-col *ngIf="!!marketData && marketData.length > 0">
+
+            <h4>Sector Performance Data</h4>
+
+            <div class="mat-table-container">
+              <mat-table [dataSource]="marketData">
+
+                <ng-container matColumnDef="rank">
+                  <mat-header-cell *matHeaderCellDef>Rank</mat-header-cell>
+                  <mat-cell *matCellDef="let item">{{item.rank}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="service">
+                  <mat-header-cell *matHeaderCellDef>Commu Services</mat-header-cell>
+                  <mat-cell *matCellDef="let item">{{item.communicationServices}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="desc">
+                  <mat-header-cell *matHeaderCellDef>Consumer Discretionary</mat-header-cell>
+                  <mat-cell *matCellDef="let item">{{item.consumerDiscretionary}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="staple">
+                  <mat-header-cell *matHeaderCellDef>Consumer Staples</mat-header-cell>
+                  <mat-cell *matCellDef="let item">{{item.consumerStaples}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="energy">
+                  <mat-header-cell *matHeaderCellDef>Energy</mat-header-cell>
+                  <mat-cell *matCellDef="let item">{{item.energy}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="fin">
+                  <mat-header-cell *matHeaderCellDef>Financials</mat-header-cell>
+                  <mat-cell *matCellDef="let item">{{item.financials}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="health">
+                  <mat-header-cell *matHeaderCellDef>Health Care</mat-header-cell>
+                  <mat-cell *matCellDef="let item">{{item.healthCare}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="indu">
+                  <mat-header-cell *matHeaderCellDef>Health</mat-header-cell>
+                  <mat-cell *matCellDef="let item">{{item.health}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="it">
+                  <mat-header-cell *matHeaderCellDef>Info Tech</mat-header-cell>
+                  <mat-cell *matCellDef="let item">{{item.informationTechnology}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="material">
+                  <mat-header-cell *matHeaderCellDef>Materials</mat-header-cell>
+                  <mat-cell *matCellDef="let item">{{item.materials}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="util">
+                  <mat-header-cell *matHeaderCellDef>Utilities</mat-header-cell>
+                  <mat-cell *matCellDef="let item">{{item.utilities}}</mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedCols"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedCols;"></mat-row>
+              </mat-table>
+            </div>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+    <div>
+    </div>
   </div>
 </ion-content>

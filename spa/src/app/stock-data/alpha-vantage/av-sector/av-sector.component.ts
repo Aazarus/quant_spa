@@ -13,6 +13,7 @@ export class AvSectorComponent implements OnInit {
   public displayedCols: string[] = [
     'rank', 'service', 'desc', 'staple', 'energy', 'fin', 'health', 'indu', 'it', 'material', 'util'
   ];
+  public isLoading: boolean = false;
   private _marketData: AvSectorPerf[];
 
   constructor(private repo: MarketDataService) { }
@@ -24,12 +25,16 @@ export class AvSectorComponent implements OnInit {
   }
 
   public getSector(): void {
+    this.isLoading = true;
     this.repo.getAvSectorPerformance().subscribe(
       result => {
         this._marketData = result;
+        this.isLoading = false;
       },
-      error => console.log(error)
+      error => {
+        console.log(error)
+        this.isLoading = false;
+      }
     );
   }
-
 }
