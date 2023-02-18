@@ -109,4 +109,9 @@ export class MarketDataService {
     const apiUrl = `${this.url}avfxeod/${ticker}/${start}/${period}`;
     return this.httpClient.get<FxData[]>(apiUrl);
   }
+
+  public getAvFxBar(ticker: string, interval: string, outputSize: string): Observable<FxData[]> {
+    const apiUrl = `${this.url}avfxbar/${ticker}/${interval}/${outputSize}`;
+    return this.httpClient.get<FxData[]>(apiUrl);
+  }
 }
