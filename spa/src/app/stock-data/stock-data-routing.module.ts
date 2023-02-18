@@ -8,6 +8,7 @@ import { YahooStockComponent } from './yahoo/yahoo-stock/yahoo-stock.component';
 import { YahooStockSaveComponent } from './yahoo/yahoo-stock-save/yahoo-stock-save.component';
 import { IexStockComponent } from './iex/iex-stock/iex-stock.component';
 import { IexQuoteComponent } from './iex/iex-quote/iex-quote.component';
+import { AvFxBarComponent } from './alpha-vantage/av-fx-bar/av-fx-bar.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'av-fx',
     component: AvFxComponent
+  },
+  {
+    path: 'av-fx-bar',
+    component: AvFxBarComponent
   }
 ];
 

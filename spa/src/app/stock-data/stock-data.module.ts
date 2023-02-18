@@ -1,3 +1,4 @@
+import { AvFxBarComponent } from './alpha-vantage/av-fx-bar/av-fx-bar.component';
 import { FxTableComponent } from './fx-table/fx-table.component';
 import { AvFxComponent } from './alpha-vantage/av-fx/av-fx.component';
 import { AvQuoteComponent } from './alpha-vantage/av-quote/av-quote.component';
@@ -32,7 +33,8 @@ const components = [
   AvBarComponent,
   AvQuoteComponent,
   AvFxComponent,
-  FxTableComponent
+  FxTableComponent,
+  AvFxBarComponent
 ];
 
 @NgModule({

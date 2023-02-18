@@ -54,6 +54,7 @@ export class AppComponent {
         { title: 'AV Bar', url: '/stock-data/av-bar' },
         { title: 'AV Quote', url: '/stock-data/av-quote' },
         { title: 'AV FX', url: '/stock-data/av-fx' },
+        { title: 'AV FX Bar', url: '/stock-data/av-fx-bar' },
       ]
     }
   ];
