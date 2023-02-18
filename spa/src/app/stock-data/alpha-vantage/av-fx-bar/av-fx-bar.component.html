@@ -63,7 +63,14 @@
                 class="right-align stock-button"
                 (click)="getFxBarData()"
                 [disabled]="isFormValid"
-              >Get Fx Bar Data</button>
+              >
+                <div *ngIf="!isLoading;else loadingSpinner">
+                  Get Fx Bar Data
+                </div>
+                <ng-template #loadingSpinner>
+                  <ion-spinner></ion-spinner>
+                </ng-template>
+              </button>
             </ion-col>
           </ion-row>
 

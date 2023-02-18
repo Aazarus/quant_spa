@@ -13,6 +13,7 @@ export class AvFxBarComponent implements OnInit {
   public ticker: string = "";
   public interval: string = "";
   public outputSize: string = "";
+  public isLoading: boolean = false;
 
   private _marketData: FxData[] = [];
 
@@ -31,11 +32,16 @@ export class AvFxBarComponent implements OnInit {
   }
 
   public getFxBarData(): void {
+    this.isLoading = true;
     this.repo.getAvFxBar(this.ticker, this.interval, this.outputSize).subscribe(
       result=>{
+        this.isLoading = false;
         this._marketData = result;
       },
-      error => console.log(error)
+      error => {
+        console.log(error);
+        this.isLoading = false;
+      }
     );
   }
 }
