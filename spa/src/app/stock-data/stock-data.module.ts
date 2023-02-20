@@ -1,3 +1,4 @@
+import { QuandlStockComponent } from './quandl/quandl-stock/quandl-stock.component';
 import { AvSectorComponent } from './alpha-vantage/av-sector/av-sector.component';
 import { AvFxBarComponent } from './alpha-vantage/av-fx-bar/av-fx-bar.component';
 import { FxTableComponent } from './fx-table/fx-table.component';
@@ -36,7 +37,8 @@ const components = [
   AvFxComponent,
   FxTableComponent,
   AvFxBarComponent,
-  AvSectorComponent
+  AvSectorComponent,
+  QuandlStockComponent
 ];
 
 @NgModule({

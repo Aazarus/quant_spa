@@ -1,3 +1,4 @@
+import { QuandlStockComponent } from './quandl/quandl-stock/quandl-stock.component';
 import { AvSectorComponent } from './alpha-vantage/av-sector/av-sector.component';
 import { AvFxComponent } from './alpha-vantage/av-fx/av-fx.component';
 import { AvQuoteComponent } from './alpha-vantage/av-quote/av-quote.component';
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'av-sector',
     component: AvSectorComponent
+  },
+  {
+    path: 'quandl-stock',
+    component: QuandlStockComponent
   }
 ];
 
