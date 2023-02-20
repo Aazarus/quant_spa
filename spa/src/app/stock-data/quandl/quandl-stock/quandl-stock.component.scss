@@ -1,0 +1,19 @@
+.mat-table-container {
+  display: block;
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.mat-header-cell, .mat-cell {
+  white-space: nowrap;
+}
+
+.mat-table-sticky .mat-row {
+  position: sticky;
+  top: 48px; /* Height of the sticky header */
+}

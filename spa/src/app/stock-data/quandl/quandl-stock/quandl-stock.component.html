@@ -2,5 +2,134 @@
 
 <ion-content [fullscreen]="true">
   <div style="overflow-x:auto" class="root">
+
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+
+            <div class="ion-text-center">
+              <h3 style="margin: 25px;">
+                Get Stock Quote from Quandl
+              </h3>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-text-center">
+
+          <ion-col>
+            <form>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <mat-form-field>
+                      <input matInput placeholder="Ticker" [(ngModel)]="ticker" name="ticker">
+                    </mat-form-field>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col class="ion-text-center">
+                    <app-date-picker [label]="startDateLabel" (selected)="startDateSelected($event)"></app-date-picker>
+                  </ion-col>
+
+                  <ion-col class="ion-text-center">
+                    <app-date-picker [label]="endDateLabel" (selected)="endDateSelected($event)"></app-date-picker>
+                  </ion-col>
+                </ion-row>
+
+              <ion-row class="ion-text-center">
+                <ion-col>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    class="right-align stock-button"
+                    (click)="getQuandlStock()"
+                    [disabled]="isFormInvalid"
+                  >
+                    <div *ngIf="!isLoading;else loadingSpinner">
+                      Get Stock Data
+                    </div>
+                    <ng-template #loadingSpinner>
+                      <ion-spinner></ion-spinner>
+                    </ng-template>
+                  </button>
+                </ion-col>
+              </ion-row>
+              </ion-grid>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && !!marketData && marketData.length > 0">
+    <h4 *ngIf="!!tableTicker">{{tableTicker}} price</h4>
+
+    <div class="mat-table-container">
+
+      <mat-table [dataSource]="marketData">
+
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.date | date: 'dd/MM/yyyy'}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="open">
+          <mat-header-cell *matHeaderCellDef>Open</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.open}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="high">
+          <mat-header-cell *matHeaderCellDef>High</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.high}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="low">
+          <mat-header-cell *matHeaderCellDef>Low</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.low}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="close">
+          <mat-header-cell *matHeaderCellDef>Close</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.close}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="volume">
+          <mat-header-cell *matHeaderCellDef>Open</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.open}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="openAdj">
+          <mat-header-cell *matHeaderCellDef>Open Adj</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.openAdj}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="highAdj">
+          <mat-header-cell *matHeaderCellDef>High Adj</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.highAdj}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lowAdj">
+          <mat-header-cell *matHeaderCellDef>Low Adj</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.lowAdj}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="closeAdj">
+          <mat-header-cell *matHeaderCellDef>Close Adj</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.closeAdj}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="volumeAdj">
+          <mat-header-cell *matHeaderCellDef>Volume Adj</mat-header-cell>
+          <mat-cell *matCellDef="let item">{{item.volumeAdj}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedCols; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let item; columns: displayedCols;"></mat-row>
+      </mat-table>
+    </div>
   </div>
 </ion-content>
