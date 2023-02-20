@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { AvQuote } from 'src/app/models/av-quote';
 import { FxData } from 'src/app/models/fx-data';
 import { AvSectorPerf } from '../models/av-sector-perf';
+import { QuandlStockData } from '../models/quandl-stock-data';
 
 @Injectable({
   providedIn: 'root'
@@ -119,5 +120,10 @@ export class MarketDataService {
   public getAvSectorPerformance(): Observable<AvSectorPerf[]> {
     const apiUrl = `${this.url}avsector/perf`;
     return this.httpClient.get<AvSectorPerf[]>(apiUrl);
+  }
+
+  public getQuandlStock(ticker: string, start: string, end: string): Observable<QuandlStockData[]> {
+    const apiUrl = `${this.url}QuandlStock/${ticker}/${start}/${end}`;
+    return this.httpClient.get<QuandlStockData[]>(apiUrl);
   }
 }
