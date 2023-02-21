@@ -24,6 +24,7 @@ import { YahooStockComponent } from './yahoo/yahoo-stock/yahoo-stock.component';
 import { YahooStockSaveComponent } from './yahoo/yahoo-stock-save/yahoo-stock-save.component';
 import { StockDataRoutingModule } from './stock-data-routing.module';
 import { IexStockComponent } from './iex/iex-stock/iex-stock.component';
+import { IsdaComponent } from './isda/isda.component';
 
 const components = [
   YahooStockComponent,
@@ -38,7 +39,8 @@ const components = [
   FxTableComponent,
   AvFxBarComponent,
   AvSectorComponent,
-  QuandlStockComponent
+  QuandlStockComponent,
+  IsdaComponent
 ];
 
 @NgModule({

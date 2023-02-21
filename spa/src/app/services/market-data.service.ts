@@ -8,6 +8,7 @@ import { AvQuote } from 'src/app/models/av-quote';
 import { FxData } from 'src/app/models/fx-data';
 import { AvSectorPerf } from '../models/av-sector-perf';
 import { QuandlStockData } from '../models/quandl-stock-data';
+import { IsdaRateData } from '../models/IsdaRateData';
 
 @Injectable({
   providedIn: 'root'
@@ -125,5 +126,10 @@ export class MarketDataService {
   public getQuandlStock(ticker: string, start: string, end: string): Observable<QuandlStockData[]> {
     const apiUrl = `${this.url}QuandlStock/${ticker}/${start}/${end}`;
     return this.httpClient.get<QuandlStockData[]>(apiUrl);
+  }
+
+  public getIsdaRate(currency: string, date: string): Observable<IsdaRateData[]> {
+    const apiUrl = `${this.url}IsdaRate/${currency}/${date}`;
+    return this.httpClient.get<IsdaRateData[]>(apiUrl);
   }
 }

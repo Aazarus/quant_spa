@@ -11,6 +11,7 @@ import { YahooStockSaveComponent } from './yahoo/yahoo-stock-save/yahoo-stock-sa
 import { IexStockComponent } from './iex/iex-stock/iex-stock.component';
 import { IexQuoteComponent } from './iex/iex-quote/iex-quote.component';
 import { AvFxBarComponent } from './alpha-vantage/av-fx-bar/av-fx-bar.component';
+import { IsdaComponent } from './isda/isda.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'quandl-stock',
     component: QuandlStockComponent
+  },
+  {
+    path: 'isda',
+    component: IsdaComponent
   }
 ];
 
