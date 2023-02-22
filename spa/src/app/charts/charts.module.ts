@@ -1,3 +1,4 @@
+import { ResizeComponent } from './chart-line/resize/resize.component';
 import { Y2AxisComponent } from './chart-line/y2-axis/y2-axis.component';
 import { MultipleLinesComponent } from './chart-line/multiple-lines/multiple-lines.component';
 import { SimpleLineComponent } from './chart-line/simple-line/simple-line.component';
@@ -21,7 +22,8 @@ const components = [
   ChartLineComponent,
   SimpleLineComponent,
   MultipleLinesComponent,
-  Y2AxisComponent
+  Y2AxisComponent,
+  ResizeComponent
 ];
 
 @NgModule({
