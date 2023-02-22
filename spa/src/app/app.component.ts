@@ -59,6 +59,12 @@ export class AppComponent {
         { title: 'Quandl Stock', url: '/stock-data/quandl-stock' },
         { title: 'ISDA', url: '/stock-data/isda' },
       ]
+    },
+    {
+      title: 'Charts',
+      children: [
+        { title: 'Line Charts', url: '/charts/chart-line' },
+      ]
     }
   ];
 
