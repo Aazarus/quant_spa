@@ -1,3 +1,4 @@
+import { Y2AxisComponent } from './chart-line/y2-axis/y2-axis.component';
 import { MultipleLinesComponent } from './chart-line/multiple-lines/multiple-lines.component';
 import { SimpleLineComponent } from './chart-line/simple-line/simple-line.component';
 import { ChartRoutingModule } from './charts-routing.module';
@@ -19,7 +20,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
 const components = [
   ChartLineComponent,
   SimpleLineComponent,
-  MultipleLinesComponent
+  MultipleLinesComponent,
+  Y2AxisComponent
 ];
 
 @NgModule({
