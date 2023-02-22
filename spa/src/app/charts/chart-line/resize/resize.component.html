@@ -1,3 +1,9 @@
-<p>
-  resize works!
-</p>
+<mat-card style="margin: 30px">
+
+  <mat-card-title>Resize Chart</mat-card-title>
+
+  <mat-card-content ngResizable class="resize-panel">
+    <div echarts [options]="options"></div>
+  </mat-card-content>
+
+</mat-card>

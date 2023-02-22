@@ -17,6 +17,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DATE_FORMATS } from 'src/app/shared/DateFormat';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { AngularDraggableModule } from 'angular2-draggable';
 
 const components = [
   ChartLineComponent,
@@ -40,6 +41,7 @@ const components = [
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
+    AngularDraggableModule
   ],
   declarations: [
     components,
