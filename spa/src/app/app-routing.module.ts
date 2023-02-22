@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./stock-data/stock-data.module').then( m => m.StockDataModule)
   },
   {
+    path: 'charts',
+    loadChildren: () => import('./charts/charts.module').then( m => m.ChartsModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
