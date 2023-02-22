@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
-interface page {
-  title: string,
-  url?: string,
-  icon?: string,
-  children?: page[],
-  open?: boolean
-}
+interface Page {
+  title: string;
+  url?: string;
+  icon?: string;
+  children?: Page[];
+  open?: boolean;
+};
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -14,7 +14,7 @@ interface page {
 })
 export class AppComponent {
 
-  public pages: page[] = [
+  public pages: Page[] = [
     { title: 'Home', url: '/home', icon: 'home' },
     {
       title: 'Basics',
