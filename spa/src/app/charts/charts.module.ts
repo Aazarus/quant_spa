@@ -1,3 +1,4 @@
+import { MultipleLinesComponent } from './chart-line/multiple-lines/multiple-lines.component';
 import { SimpleLineComponent } from './chart-line/simple-line/simple-line.component';
 import { ChartRoutingModule } from './charts-routing.module';
 import { ChartLineComponent } from './chart-line/chart-line.component';
@@ -17,7 +18,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
 
 const components = [
   ChartLineComponent,
-  SimpleLineComponent
+  SimpleLineComponent,
+  MultipleLinesComponent
 ];
 
 @NgModule({

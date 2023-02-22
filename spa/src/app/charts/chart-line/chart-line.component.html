@@ -1,15 +1,17 @@
 <app-header [title]="title"></app-header>
 
 <ion-content [fullscreen]="true">
-
-  <div style="overflow-x:scroll;">
-
+  <div>
     <mat-tab-group>
+
       <mat-tab label="Simple Line">
         <app-simple-line></app-simple-line>
       </mat-tab>
+
+      <mat-tab label="Multiple Lines">
+        <app-multiple-lines></app-multiple-lines>
+      </mat-tab>
+
     </mat-tab-group>
-
   </div>
-
 </ion-content>
