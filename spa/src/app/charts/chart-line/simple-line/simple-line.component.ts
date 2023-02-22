@@ -8,7 +8,6 @@ import { EChartsOption } from 'echarts';
 })
 export class SimpleLineComponent implements OnInit {
 
-  public title = 'Simple Line Chart';
   public options: EChartsOption;
   private maxPlotPoints = 50;
   private delta = 5.0;
