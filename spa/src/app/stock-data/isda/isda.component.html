@@ -2,6 +2,46 @@
 
 <ion-content [fullscreen]="true">
   <div style="overflow-x:auto" class="root">
-
+      <ion-grid>
+        <form>
+        <ion-row class="ion-text-center">
+          <ion-col>
+            <div>
+              <h3 style="margin: 25px">
+                Get Interest Rate Data from ISDA
+              </h3>
+            </div>
+          </ion-col>
+        </ion-row>
+          <ion-row class="ion-text-center">
+            <ion-col>
+              <mat-form-field>
+                <input matInput placeholder="Currency" [(ngModel)]="currency" name="currency">
+              </mat-form-field>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-text-center">
+            <ion-col>
+              <app-date-picker [label]="dateLabel" (selected)="dateSelected($event)"></app-date-picker>
+            </ion-col>
+          </ion-row>
+        <ion-row class="ion-text-center">
+          <ion-col>
+            <div><ion-text color="danger">**DISABLED**</ion-text></div>
+            <div><ion-text color="danger"><sub>**Markit has ended development on this endpoint so it no longer works.**</sub></ion-text></div>
+          </ion-col>
+        </ion-row>
+        <div>
+          <button mat-raised-button color="primary" class="right-align stock-button" (click)="getIsdaData()" [disabled]="true">
+            <div *ngIf="!isLoading;else loadingSpinner">
+              Get Stock Data
+            </div>
+            <ng-template #loadingSpinner>
+              <ion-spinner></ion-spinner>
+            </ng-template>
+          </button>
+        </div>
+        </form>
+    </ion-grid>
   </div>
 </ion-content>
