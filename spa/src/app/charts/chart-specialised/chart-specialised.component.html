@@ -4,9 +4,19 @@
 <ion-content [fullscreen]="true">
   <div>
     <mat-tab-group mat-align-tabs="start">
-
-      <mat-tab label=""></mat-tab>
-
+      <mat-tab label="Area Charts">
+          <mat-tab-group mat-align-tabs="start" style="margin-left: 25px;">
+            <mat-tab label="Simple Chart">
+              <app-area-chart [chart]="'simple'"></app-area-chart>
+            </mat-tab>
+            <mat-tab label="Multiple Chart">
+              <app-area-chart [chart]="'multiple'"></app-area-chart>
+            </mat-tab>
+            <mat-tab label="Stack Chart">
+              <app-area-chart [chart]="'stack'"></app-area-chart>
+            </mat-tab>
+          </mat-tab-group>
+      </mat-tab>
     </mat-tab-group>
   </div>
 </ion-content>
