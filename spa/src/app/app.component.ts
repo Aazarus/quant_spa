@@ -64,6 +64,7 @@ export class AppComponent {
       title: 'Charts',
       children: [
         { title: 'Line Charts', url: '/charts/chart-line' },
+        { title: 'Specialised Charts', url: '/charts/chart-specialised' },
       ]
     }
   ];
