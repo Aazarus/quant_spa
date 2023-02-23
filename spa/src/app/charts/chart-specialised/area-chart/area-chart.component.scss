@@ -1,0 +1,12 @@
+.cardList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.card-border {
+  margin: 10px;
+  width: 400px;
+  height: 400px;
+}
