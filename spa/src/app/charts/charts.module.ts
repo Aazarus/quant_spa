@@ -1,3 +1,4 @@
+import { BarChartComponent } from './chart-specialised/bar-chart/bar-chart.component';
 import { AreaChartComponent } from './chart-specialised/area-chart/area-chart.component';
 import { ChartSpecialisedComponent } from './chart-specialised/chart-specialised.component';
 import { ResizeComponent } from './chart-line/resize/resize.component';
@@ -29,6 +30,7 @@ const components = [
   ResizeComponent,
   ChartSpecialisedComponent,
   AreaChartComponent,
+  BarChartComponent
 ];
 
 @NgModule({

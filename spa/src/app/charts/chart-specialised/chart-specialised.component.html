@@ -4,6 +4,7 @@
 <ion-content [fullscreen]="true">
   <div>
     <mat-tab-group mat-align-tabs="start">
+
       <mat-tab label="Area Charts">
           <mat-tab-group mat-align-tabs="start" style="margin-left: 25px;">
             <mat-tab label="Simple Chart">
@@ -17,6 +18,24 @@
             </mat-tab>
           </mat-tab-group>
       </mat-tab>
+
+
+      <mat-tab label="Bar Charts">
+        <mat-tab-group mat-align-tabs="start" style="margin-left: 25px;">
+          <mat-tab label="Vertical Chart">
+            <app-bar-chart [chart]="'vertical'"></app-bar-chart>
+          </mat-tab>
+          <mat-tab label="Horizontal Chart">
+            <app-bar-chart [chart]="'horizontal'"></app-bar-chart>
+          </mat-tab>
+          <mat-tab label="Group Chart">
+            <app-bar-chart [chart]="'group'"></app-bar-chart>
+          </mat-tab>
+          <mat-tab label="Stack Chart">
+            <app-bar-chart [chart]="'stack'"></app-bar-chart>
+          </mat-tab>
+        </mat-tab-group>
+    </mat-tab>
     </mat-tab-group>
   </div>
 </ion-content>
