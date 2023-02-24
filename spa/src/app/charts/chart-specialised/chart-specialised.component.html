@@ -35,7 +35,24 @@
             <app-bar-chart [chart]="'stack'"></app-bar-chart>
           </mat-tab>
         </mat-tab-group>
-    </mat-tab>
+      </mat-tab>
+
+      <mat-tab label="Pie Charts">
+        <mat-tab-group mat-align-tabs="start" style="margin-left: 25px;">
+          <mat-tab label="Simple Pie Chart">
+            <app-pie-chart [chart]="'simple'"></app-pie-chart>
+          </mat-tab>
+          <mat-tab label="Doughnut Chart">
+            <app-pie-chart [chart]="'doughnut'"></app-pie-chart>
+          </mat-tab>
+          <mat-tab label="Rose Area Chart">
+            <app-pie-chart [chart]="'area'"></app-pie-chart>
+          </mat-tab>
+          <mat-tab label="Rose Radius Chart">
+            <app-pie-chart [chart]="'radius'"></app-pie-chart>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-tab>
     </mat-tab-group>
   </div>
 </ion-content>
