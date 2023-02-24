@@ -1,3 +1,4 @@
+import { CandleChartComponent } from './chart-stock/candle-chart/candle-chart.component';
 import { ChartStockComponent } from './chart-stock/chart-stock.component';
 import { PolarChartComponent } from './chart-specialised/polar-chart/polar-chart.component';
 import { PieChartComponent } from './chart-specialised/pie-chart/pie-chart.component';
@@ -36,7 +37,8 @@ const components = [
   BarChartComponent,
   PieChartComponent,
   PolarChartComponent,
-  ChartStockComponent
+  ChartStockComponent,
+  CandleChartComponent
 ];
 
 @NgModule({
