@@ -1,3 +1,4 @@
+import { PolarChartComponent } from './chart-specialised/polar-chart/polar-chart.component';
 import { PieChartComponent } from './chart-specialised/pie-chart/pie-chart.component';
 import { BarChartComponent } from './chart-specialised/bar-chart/bar-chart.component';
 import { AreaChartComponent } from './chart-specialised/area-chart/area-chart.component';
@@ -32,7 +33,8 @@ const components = [
   ChartSpecialisedComponent,
   AreaChartComponent,
   BarChartComponent,
-  PieChartComponent
+  PieChartComponent,
+  PolarChartComponent
 ];
 
 @NgModule({

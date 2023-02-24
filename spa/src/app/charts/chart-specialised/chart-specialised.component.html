@@ -53,6 +53,18 @@
           </mat-tab>
         </mat-tab-group>
       </mat-tab>
+
+      <mat-tab label="Polar Charts">
+        <mat-tab-group mat-align-tabs="start" style="margin-left: 25px;">
+          <mat-tab label="Single Line Polar Chart">
+            <app-polar-chart [chart]="'single'"></app-polar-chart>
+          </mat-tab>
+          <mat-tab label="Multiple Line Polar Chart">
+            <app-polar-chart [chart]="'multiple'"></app-polar-chart>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-tab>
     </mat-tab-group>
+
   </div>
 </ion-content>
