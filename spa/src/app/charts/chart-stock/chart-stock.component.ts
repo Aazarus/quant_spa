@@ -1,13 +1,14 @@
 import { MarketData } from 'src/app/models/market-data';
 import { MarketDataService } from 'src/app/services/market-data.service';
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-chart-stock',
   templateUrl: './chart-stock.component.html',
   styleUrls: ['./chart-stock.component.scss'],
 })
-export class ChartStockComponent implements OnInit {
+export class ChartStockComponent implements OnInit, OnDestroy {
 
   public title: string = "Stock Charts";
 
@@ -21,7 +22,13 @@ export class ChartStockComponent implements OnInit {
 
   private _marketData: MarketData[] = [];
 
+  private yahooSubscription: Subscription;
+
   constructor(private repo: MarketDataService) { }
+
+  ngOnDestroy() {
+    this.yahooSubscription.unsubscribe();
+  }
 
   ngOnInit() {
   }

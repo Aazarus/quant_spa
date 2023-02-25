@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { RepositoryService } from 'src/app/services/repository.service';
 import { Symbol } from 'src/app/models/symbol';
@@ -9,12 +10,25 @@ import { StockDeleteDialogComponent } from './stock-delete-dialog/stock-delete-d
   templateUrl: './stock-delete.component.html',
   styleUrls: ['./stock-delete.component.scss'],
 })
-export class StockDeleteComponent {
+export class StockDeleteComponent implements OnDestroy {
 
   public stockId: number;
   public isDeleted: boolean = false;
 
+  private deleteStockWithResultSub: Subscription;
+  private dialogRefSub: Subscription;
+
   constructor(private repoService: RepositoryService, private dialog: MatDialog) { }
+
+  ngOnDestroy(): void {
+    if(!!this.deleteStockWithResultSub) {
+      this.deleteStockWithResultSub.unsubscribe();
+    }
+
+    if(!!this.dialogRefSub) {
+      this.dialogRefSub.unsubscribe();
+    }
+  }
 
   public get stock(): Symbol {
     return this.repoService.stock;
@@ -26,7 +40,7 @@ export class StockDeleteComponent {
   }
 
   public deleteStock(): void {
-    this.repoService.deleteStockWithResult(this.stockId).subscribe(
+    this.deleteStockWithResultSub = this.repoService.deleteStockWithResult(this.stockId).subscribe(
       _ => this.isDeleted = true,
       (error: Error) => console.log("Received an error", error));
   }
@@ -43,7 +57,7 @@ export class StockDeleteComponent {
     const dialogRef = this.dialog.open(StockDeleteDialogComponent, dialogConfig);
 
     if (dialogRef) {
-      dialogRef.afterClosed().subscribe( 
+      this.dialogRefSub = dialogRef.afterClosed().subscribe(
         result => {
           if (result) {
             this.deleteStock();

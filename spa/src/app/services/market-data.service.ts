@@ -1,5 +1,5 @@
 import { MarketQuote } from 'src/app/models/market-quote';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MarketData } from 'src/app/models/market-data';
 import { Injectable } from '@angular/core';
@@ -9,11 +9,12 @@ import { FxData } from 'src/app/models/fx-data';
 import { AvSectorPerf } from '../models/av-sector-perf';
 import { QuandlStockData } from '../models/quandl-stock-data';
 import { IsdaRateData } from '../models/IsdaRateData';
+import { OnDestroy } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MarketDataService {
+export class MarketDataService implements OnDestroy {
 
   private _yahooStock: MarketData[] = [];
   private _iexStock: MarketData[] = [];
@@ -22,8 +23,34 @@ export class MarketDataService {
   private _avStockBar: MarketData[] = [];
   private url: string;
 
+  // Subscriptions
+  private yahooStockSub: Subscription;
+  private iexStockSub: Subscription;
+  private iexQuoteSub: Subscription;
+  private avEODStockSub: Subscription;
+
   constructor(private httpClient: HttpClient) {
     this.url = `${environment.baseUrl}api/`;
+  }
+
+  ngOnDestroy(): void {
+
+    if (!!this.yahooStockSub) {
+      this.yahooStockSub.unsubscribe();
+    }
+
+    if (!!this.iexStockSub) {
+      this.iexStockSub.unsubscribe();
+    }
+
+    if (!!this.iexQuoteSub) {
+      this.iexQuoteSub.unsubscribe();
+    }
+
+    if (!!this.avEODStockSub) {
+      this.avEODStockSub.unsubscribe();
+    }
+
   }
 
   public get yahooStock(): MarketData[] {
@@ -48,7 +75,7 @@ export class MarketDataService {
 
   public getYahooStock(ticker: string, start: string, end: string, period: string): void  {
     const apiUrl = `${this.url}YahooStock/${ticker}/${start}/${end}/${period}`;
-    this.httpClient.get<MarketData[]>(apiUrl).subscribe(
+    this.yahooStockSub = this.httpClient.get<MarketData[]>(apiUrl).subscribe(
       result => this._yahooStock = result,
       error => console.log(error)
     );
@@ -61,7 +88,7 @@ export class MarketDataService {
 
   public getIexStock(ticker: string, range: string): void {
     const apiUrl = `${this.url}IexStock/${ticker}/${range}`;
-    this.httpClient.get<MarketData[]>(apiUrl).subscribe(
+    this.iexStockSub = this.httpClient.get<MarketData[]>(apiUrl).subscribe(
       result => this._iexStock = result,
       error => console.log(error)
     );
@@ -74,7 +101,7 @@ export class MarketDataService {
 
   public getIexQuote(ticker: string): void {
     const apiUrl = `${this.url}IexQuote/${ticker}`;
-    this.httpClient.get<MarketQuote>(apiUrl).subscribe(
+    this.iexQuoteSub = this.httpClient.get<MarketQuote>(apiUrl).subscribe(
       result => this._iexQuote = result,
       error => console.log(error)
     );
@@ -87,7 +114,7 @@ export class MarketDataService {
 
   public getAvEODStock(ticker: string, start: string, end: string, period: string): void {
     const apiUrl = `${this.url}AvEOD/${ticker}/${start}/${end}/${period}`;
-    this.httpClient.get<MarketData[]>(apiUrl).subscribe(
+    this.avEODStockSub = this.httpClient.get<MarketData[]>(apiUrl).subscribe(
       result => this._avStock = result,
       error => console.log(error)
     );

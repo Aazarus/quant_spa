@@ -1,13 +1,14 @@
-import { IsdaRateData } from './../../models/IsdaRateData';
+import { Subscription } from 'rxjs';
+import { IsdaRateData } from 'src/app/models/IsdaRateData';
 import { MarketDataService } from 'src/app/services/market-data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-isda',
   templateUrl: './isda.component.html',
   styleUrls: ['./isda.component.scss'],
 })
-export class IsdaComponent implements OnInit {
+export class IsdaComponent implements OnDestroy {
 
   public title: string = "ISDA";
   public currency: string = "";
@@ -17,9 +18,15 @@ export class IsdaComponent implements OnInit {
 
   private _marketData: IsdaRateData[] = [];
 
+  private isdaRate: Subscription;
+
   constructor(private repo: MarketDataService) { }
 
-  ngOnInit() {}
+  ngOnDestroy() {
+    if (!!this.isdaRate) {
+      this.isdaRate.unsubscribe();
+    }
+  }
 
   public get marketData(): IsdaRateData[] {
     return this._marketData;
@@ -31,7 +38,7 @@ export class IsdaComponent implements OnInit {
 
   public getIsdaData(): void {
     this.isLoading = true;
-    this.repo.getIsdaRate(this.currency, this.date).subscribe(
+    this.isdaRate = this.repo.getIsdaRate(this.currency, this.date).subscribe(
       result => {
         this.isLoading = false;
         this._marketData = result;

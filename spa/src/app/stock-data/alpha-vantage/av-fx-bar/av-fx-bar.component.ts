@@ -1,13 +1,14 @@
 import { MarketDataService } from 'src/app/services/market-data.service';
 import { FxData } from 'src/app/models/fx-data';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-av-fx-bar',
   templateUrl: './av-fx-bar.component.html',
   styleUrls: ['./av-fx-bar.component.scss'],
 })
-export class AvFxBarComponent implements OnInit {
+export class AvFxBarComponent implements OnDestroy {
 
   public title: string = "AlphaVantage FX Bar";
   public ticker: string = "";
@@ -16,10 +17,15 @@ export class AvFxBarComponent implements OnInit {
   public isLoading: boolean = false;
 
   private _marketData: FxData[] = [];
+  private avFxSub: Subscription;
 
   constructor(private repo: MarketDataService) { }
 
-  ngOnInit() {}
+  ngOnDestroy() {
+    if (!!this.avFxSub) {
+      this.avFxSub.unsubscribe();
+    }
+  }
 
   public get marketData(): FxData[] {
     return this._marketData;
@@ -33,7 +39,7 @@ export class AvFxBarComponent implements OnInit {
 
   public getFxBarData(): void {
     this.isLoading = true;
-    this.repo.getAvFxBar(this.ticker, this.interval, this.outputSize).subscribe(
+    this.avFxSub = this.repo.getAvFxBar(this.ticker, this.interval, this.outputSize).subscribe(
       result=>{
         this.isLoading = false;
         this._marketData = result;

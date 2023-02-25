@@ -1,13 +1,14 @@
+import { Subscription } from 'rxjs';
 import { MarketData } from 'src/app/models/market-data';
 import { MarketDataService } from 'src/app/services/market-data.service';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-iex-stock',
   templateUrl: './iex-stock.component.html',
   styleUrls: ['./iex-stock.component.scss'],
 })
-export class IexStockComponent {
+export class IexStockComponent implements OnDestroy {
 
   public title: string = "IEX Stock";
   public ticker: string = "IBM";
@@ -18,7 +19,15 @@ export class IexStockComponent {
 
   public displayedCols: string[] = ['date', 'open', 'high', 'low', 'close', 'volume'];
 
+  private iexStockSub: Subscription;
+
   constructor(private marketRepo: MarketDataService) { }
+
+  ngOnDestroy(): void {
+    if (!!this.iexStockSub) {
+      this.iexStockSub.unsubscribe();
+    }
+  }
 
   public get stock(): MarketData[] {
     return this._marketData;
@@ -26,7 +35,7 @@ export class IexStockComponent {
 
   public getStock(): void {
     this.isLoading = true;
-    this.marketRepo.getIexStockWithResult(this.ticker, this.range).subscribe(
+    this.iexStockSub = this.marketRepo.getIexStockWithResult(this.ticker, this.range).subscribe(
       result => {
         this._marketData = result;
         this.isLoading = false;

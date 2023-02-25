@@ -1,5 +1,6 @@
+import { Subscription } from 'rxjs';
 import { MarketDataService } from 'src/app/services/market-data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MarketData } from 'src/app/models/market-data';
 
 @Component({
@@ -7,7 +8,7 @@ import { MarketData } from 'src/app/models/market-data';
   templateUrl: './av-bar.component.html',
   styleUrls: ['./av-bar.component.scss'],
 })
-export class AvBarComponent implements OnInit {
+export class AvBarComponent implements OnInit, OnDestroy {
 
   public title: string = "AlphaVantage Bar";
   public ticker: string = "A";
@@ -19,7 +20,15 @@ export class AvBarComponent implements OnInit {
 
   public displayedCols: string[] = ['date', 'open', 'high', 'low', 'close', 'volume'];
 
+  private avStockBarSub: Subscription;
+
   constructor(private marketRepo: MarketDataService) { }
+
+  ngOnDestroy(): void {
+    if (!!this.avStockBarSub) {
+      this.avStockBarSub.unsubscribe();
+    }
+  }
 
   ngOnInit() {
     this.getBar();
@@ -30,7 +39,7 @@ export class AvBarComponent implements OnInit {
   }
 
   public getBar() {
-    this.marketRepo.getAvStockBar(this.ticker, this.interval, this.outputSize).subscribe(
+    this.avStockBarSub = this.marketRepo.getAvStockBar(this.ticker, this.interval, this.outputSize).subscribe(
       result => {
         this._marketData = result;
         this.isLoading = false;

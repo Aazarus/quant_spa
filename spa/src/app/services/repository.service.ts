@@ -1,16 +1,16 @@
-import { MarketData } from './../models/market-data';
+import { MarketData } from 'src/app/models/market-data';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { IndexData } from 'src/app/models/index-data';
 import { Price } from 'src/app/models/price';
 import { Symbol } from 'src/app/models/symbol';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RepositoryService {
+export class RepositoryService implements OnDestroy {
 
   private _stock: Symbol = null;
   private _stocks: Symbol[] = [];
@@ -19,10 +19,66 @@ export class RepositoryService {
   private _indexData: IndexData[] = [];
   private url: string;
 
+
+  // Subscriptions
+  private stocksSub: Subscription;
+  private getStockSub: Subscription;
+  private stockWithTickerSub: Subscription;
+  private stockAndPriceWithTickerSub: Subscription;
+  private stockAndPriceSub: Subscription;
+  private indexDataSub: Subscription;
+  private indexDataPeriodSub: Subscription;
+  private createStockSub: Subscription;
+  private updateStockSub: Subscription;
+  private deleteStockSub: Subscription;
+
   constructor(private httpClient: HttpClient) {
     this.url = environment.baseUrl;
     this.getStocks();
     this.getIndexDataPeriod("2005-01-01", "2005-03-01");
+  }
+
+  ngOnDestroy(): void {
+
+    if (!!this.stocksSub) {
+      this.stocksSub.unsubscribe();
+    }
+
+    if (!!this.getStockSub) {
+      this.getStockSub.unsubscribe();
+    }
+
+    if (!!this.stockWithTickerSub) {
+      this.stockWithTickerSub.unsubscribe();
+    }
+
+    if (!!this.stockAndPriceWithTickerSub) {
+      this.stockAndPriceWithTickerSub.unsubscribe();
+    }
+
+    if (!!this.stockAndPriceSub) {
+      this.stockAndPriceSub.unsubscribe();
+    }
+
+    if (!!this.indexDataSub) {
+      this.indexDataSub.unsubscribe();
+    }
+
+    if (!!this.indexDataPeriodSub) {
+      this.indexDataPeriodSub.unsubscribe();
+    }
+
+    if (!!this.createStockSub) {
+      this.createStockSub.unsubscribe();
+    }
+
+    if (!!this.updateStockSub) {
+      this.updateStockSub.unsubscribe();
+    }
+
+    if (!!this.deleteStockSub) {
+      this.deleteStockSub.unsubscribe();
+    }
   }
 
   public get stocks(): Symbol[] {
@@ -32,28 +88,28 @@ export class RepositoryService {
   public get stock(): Symbol {
     return this._stock;
   }
-  
+
   public get stockWithTicker(): Symbol {
     return this._stockWithTicker;
   }
-  
+
   public get prices(): Price[] {
     return this._prices;
   }
-  
+
   public get indexData(): IndexData[] {
     return this._indexData;
   }
 
   public getStocks(): void {
-    this.httpClient.get<Symbol[]>(this.url + 'api/stocks')
+    this.stocksSub = this.httpClient.get<Symbol[]>(this.url + 'api/stocks')
       .subscribe(
         result => this._stocks = result,
         error => console.log("Received an error", error));
   }
 
   public getStock(id: number): void {
-    this.httpClient.get<Symbol>(this.url + `api/stocks/${id}`)
+    this.getStockSub = this.httpClient.get<Symbol>(this.url + `api/stocks/${id}`)
       .subscribe(
         result => this._stock = result,
         error => console.log("Received an error", error));
@@ -64,35 +120,35 @@ export class RepositoryService {
   }
 
   public getStockWithTicker(ticker: string): void {
-    this.httpClient.get<Symbol>(this.url + `api/stocks/with-ticker/${ticker}`)
+    this.stockWithTickerSub = this.httpClient.get<Symbol>(this.url + `api/stocks/with-ticker/${ticker}`)
       .subscribe(
         result => this._stockWithTicker = result,
         error => console.log("Received an error", error));
   }
 
   public getStockAndPriceWithTicker(ticker: string, start: string, end: string): void {
-    this.httpClient.get<Symbol>(this.url + `api/stocks/and-prices-with-ticker/${ticker}/${start}/${end}`)
+    this.stockAndPriceWithTickerSub = this.httpClient.get<Symbol>(this.url + `api/stocks/and-prices-with-ticker/${ticker}/${start}/${end}`)
       .subscribe(
         result => this._stockWithTicker = result,
         error => console.log("Received an error", error));
   }
 
   public getStockAndPrice(id: number, start: string, end: string): void {
-    this.httpClient.get<Symbol>(this.url + `api/stocks/${id}/${start}/${end}`)
+    this.stockAndPriceSub = this.httpClient.get<Symbol>(this.url + `api/stocks/${id}/${start}/${end}`)
       .subscribe(
         result => this._stock = result,
         error => console.log("Received an error", error));
   }
 
   public getIndexData(): void {
-    this.httpClient.get<IndexData[]>(this.url + `api/stocks/index-data`)
+    this.indexDataSub = this.httpClient.get<IndexData[]>(this.url + `api/stocks/index-data`)
       .subscribe(
         result => this._indexData = result,
         error => console.log("Received an error", error));
   }
-  
+
   public getIndexDataPeriod(start: string, end: string): void {
-    this.httpClient.get<IndexData[]>(this.url + `api/stocks/index-data/${start}/${end}`)
+    this.indexDataPeriodSub = this.httpClient.get<IndexData[]>(this.url + `api/stocks/index-data/${start}/${end}`)
       .subscribe(
         result => this._indexData = result,
         error => console.log("Received an error", error));
@@ -104,7 +160,7 @@ export class RepositoryService {
       region: stock.region,
       sector: stock.sector
     };
-    this.httpClient.post<number>(this.url + `api/stocks`, newStock).subscribe(
+    this.createStockSub = this.httpClient.post<number>(this.url + `api/stocks`, newStock).subscribe(
       result => {
         stock.symbolId = result;
         this._stocks.push(stock);
@@ -114,14 +170,14 @@ export class RepositoryService {
       return stock;
   }
 
-  public updateStock(stock: Symbol): void {    
+  public updateStock(stock: Symbol): void {
     let newStock: Symbol = {
       symbolId: stock.symbolId,
       ticker: stock.ticker,
       region: stock.region,
       sector: stock.sector
     };
-    this.httpClient.put(this.url + `api/stocks/${stock.symbolId}`, newStock).subscribe(
+    this.updateStockSub = this.httpClient.put(this.url + `api/stocks/${stock.symbolId}`, newStock).subscribe(
       _ => this.getStocks(),
       error => console.log("Received an error", error));
   }
@@ -136,8 +192,8 @@ export class RepositoryService {
     return this.httpClient.put(this.url + `api/stocks/${stock.symbolId}`, newStock);
   }
 
-  public deleteStock(id: number): void {    
-    this.httpClient.delete(this.url + `api/stocks/${id}`).subscribe(
+  public deleteStock(id: number): void {
+    this.deleteStockSub = this.httpClient.delete(this.url + `api/stocks/${id}`).subscribe(
       _ => this.getStocks(),
       error => console.log("Received an error", error));
   }

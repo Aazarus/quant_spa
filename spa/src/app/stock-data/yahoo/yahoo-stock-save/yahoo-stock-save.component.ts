@@ -1,14 +1,15 @@
 import { RepositoryService } from 'src/app/services/repository.service';
 import { MarketDataService } from 'src/app/services/market-data.service';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MarketData } from 'src/app/models/market-data';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-yahoo-stock-save',
   templateUrl: './yahoo-stock-save.component.html',
   styleUrls: ['./yahoo-stock-save.component.scss'],
 })
-export class YahooStockSaveComponent {
+export class YahooStockSaveComponent implements OnDestroy{
 
   public title: string = "Yahoo Stock Save";
 
@@ -19,19 +20,27 @@ export class YahooStockSaveComponent {
   public endDateLabel: string = "Select an end date"
   public period: string = "daily";
   public isSaved: boolean = false;
-  
+
   private _marketData: MarketData[] = [];
 
+  private yahooStockSub: Subscription;
+
   constructor(
-    private marketRepo: MarketDataService, 
+    private marketRepo: MarketDataService,
     private repo: RepositoryService) { }
 
   public get marketData(): MarketData[] {
     return this._marketData;
   }
 
-  public async getStock(): Promise<void> {    
-    this.marketRepo.getYahooStockWithResult(this.ticker, this.startDate, this.endDate, this.period)
+  ngOnDestroy(): void {
+    if (!!this.yahooStockSub) {
+      this.yahooStockSub.unsubscribe();
+    }
+  }
+
+  public async getStock(): Promise<void> {
+    this.yahooStockSub = this.marketRepo.getYahooStockWithResult(this.ticker, this.startDate, this.endDate, this.period)
     .subscribe(
       result => this._marketData = result,
       error => console.log("Received an error", error)
@@ -48,7 +57,7 @@ export class YahooStockSaveComponent {
   public startDateSelected(event: string): void {
     this.startDate = event
   }
-  
+
   public endDateSelected(event: string): void {
     this.endDate = event
   }

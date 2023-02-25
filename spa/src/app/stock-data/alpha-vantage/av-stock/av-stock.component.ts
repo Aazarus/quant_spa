@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
 import { MarketData } from 'src/app/models/market-data';
 import { MarketDataService } from 'src/app/services/market-data.service';
 
@@ -7,7 +8,7 @@ import { MarketDataService } from 'src/app/services/market-data.service';
   templateUrl: './av-stock.component.html',
   styleUrls: ['./av-stock.component.scss'],
 })
-export class AvStockComponent {
+export class AvStockComponent implements OnDestroy {
 
   public title = "AlphaVantage Stock";
 
@@ -21,16 +22,24 @@ export class AvStockComponent {
   public displayCols: string[] = ["date", "open", "high", "low", "close", "closeAdj", "volume"];
 
   private _marketData: MarketData[] = [];
-  
+
+  private avEodStockSub: Subscription;
+
   constructor(private marketRepo: MarketDataService) { }
+
+  ngOnDestroy(): void {
+      if (this.avEodStockSub) {
+        this.avEodStockSub.unsubscribe();
+      }
+  }
 
   public get stock(): MarketData[] {
     return this._marketData;
   }
 
-  public getStock(): void {    
+  public getStock(): void {
     this.isLoading = true;
-    this.marketRepo.getAvEODStockWithResult(this.ticker, this.startDate, this.endDate, this.period).subscribe(
+    this.avEodStockSub = this.marketRepo.getAvEODStockWithResult(this.ticker, this.startDate, this.endDate, this.period).subscribe(
       result => {
         this._marketData = result;
         this.isLoading = false;
@@ -45,7 +54,7 @@ export class AvStockComponent {
   public startDateSelected(event: string): void {
     this.startDate = event
   }
-  
+
   public endDateSelected(event: string): void {
     this.endDate = event
   }

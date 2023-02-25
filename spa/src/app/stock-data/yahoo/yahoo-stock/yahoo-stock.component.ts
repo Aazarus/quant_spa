@@ -1,14 +1,14 @@
+import { Subscription } from 'rxjs';
 import { MarketDataService } from 'src/app/services/market-data.service';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MarketData } from 'src/app/models/market-data';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-yahoo-stock',
   templateUrl: './yahoo-stock.component.html',
   styleUrls: ['./yahoo-stock.component.scss'],
 })
-export class YahooStockComponent {
+export class YahooStockComponent implements OnDestroy {
 
   public title: string = "Yahoo Stock";
   public ticker: string = "";
@@ -20,14 +20,22 @@ export class YahooStockComponent {
 
   private _marketData: MarketData[] = [];
 
+  private yahooStockSub: Subscription;
+
   constructor(private marketRepo: MarketDataService) { }
+
+  ngOnDestroy(): void {
+    if (!!this.yahooStockSub) {
+      this.yahooStockSub.unsubscribe();
+    }
+  }
 
   public get marketData(): MarketData[] {
     return this._marketData;
   }
 
-  public async getStock(): Promise<void> {    
-    this.marketRepo.getYahooStockWithResult(this.ticker, this.startDate, this.endDate, this.period)
+  public async getStock(): Promise<void> {
+    this.yahooStockSub = this.marketRepo.getYahooStockWithResult(this.ticker, this.startDate, this.endDate, this.period)
     .subscribe(
       result => this._marketData = result,
       error => console.log("Received an error", error)
@@ -37,7 +45,7 @@ export class YahooStockComponent {
   public startDateSelected(event: string): void {
     this.startDate = event
   }
-  
+
   public endDateSelected(event: string): void {
     this.endDate = event
   }
