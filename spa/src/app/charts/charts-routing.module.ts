@@ -1,3 +1,4 @@
+import { RealtimeStockComponent } from './realtime-stock/realtime-stock.component';
 import { ChartStockComponent } from './chart-stock/chart-stock.component';
 import { ChartSpecialisedComponent } from './chart-specialised/chart-specialised.component';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'chart-stock',
     component: ChartStockComponent
+  },
+  {
+    path: 'realtime-stock',
+    component: RealtimeStockComponent
   }
 ];
 

@@ -1,3 +1,4 @@
+import { RealtimeStockComponent } from './realtime-stock/realtime-stock.component';
 import { CandleVolumeComponent } from './chart-stock/candle-volume/candle-volume.component';
 import { CandleChartComponent } from './chart-stock/candle-chart/candle-chart.component';
 import { ChartStockComponent } from './chart-stock/chart-stock.component';
@@ -40,7 +41,8 @@ const components = [
   PolarChartComponent,
   ChartStockComponent,
   CandleChartComponent,
-  CandleVolumeComponent
+  CandleVolumeComponent,
+  RealtimeStockComponent
 ];
 
 @NgModule({

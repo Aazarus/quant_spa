@@ -65,7 +65,8 @@ export class AppComponent {
       children: [
         { title: 'Line Charts', url: '/charts/chart-line' },
         { title: 'Specialised Charts', url: '/charts/chart-specialised' },
-        { title: 'Stock Charts', url: '/charts/chart-stock' }
+        { title: 'Stock Charts', url: '/charts/chart-stock' },
+        { title: 'Realtime Stock Charts', url: '/charts/realtime-stock' }
       ]
     }
   ];
