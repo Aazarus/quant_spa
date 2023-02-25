@@ -28,7 +28,7 @@ export class CandleChartComponent implements OnInit, OnChanges {
     this.setup();
   }
 
-  public setup(): void {
+  private setup(): void {
     if (this.stockData) {
       this.stock = processStockChartData(this.stockData);
       this.options = this.getOptions();
@@ -36,7 +36,6 @@ export class CandleChartComponent implements OnInit, OnChanges {
   }
 
   private getOptions(): EChartsOption {
-
     var downColor = '#ec0000';
     var downBorderColor = '#8A0000';
     var upColor = '#00da3c';
