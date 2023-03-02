@@ -80,7 +80,7 @@ export class RealTimeServerComponent implements OnInit {
     return !!this.subscription;
   }
 
-  public getChart(): void {
+  public async getChart(): Promise<void> {
     const categoryData =[];
     const values = [];
     const volumes = [];
@@ -96,10 +96,9 @@ export class RealTimeServerComponent implements OnInit {
 
     let i = 1;
 
-    this.subscription = this.service.startStream(this.ticker, this.startDate, this.endDate, this.interval).subscribe(
+    this.subscription = (await this.service.startStream(this.ticker, this.startDate, this.endDate, this.interval)).subscribe(
       {
         next: (item: StockOutput) => {
-          console.log("🚀 ~ file: real-time-server.component.ts:97 ~ RealTimeServerComponent ~ getChart ~ item:", item)
           this.data.categoryData.push(item.stock.date.toString().substring(0, 10));
           this.data.values.push([item.stock.open, item.stock.close, item.stock.low, item.stock.high]);
           this.data.volumes.push(item.stock.volume);
@@ -216,6 +215,13 @@ export class RealTimeServerComponent implements OnInit {
         axisLine: { show: false },
         axisTick: { show: false },
         splitLine: { show: false }
+      }],
+      dataZoom: [{
+        show: true,
+        type: 'slider',
+        start: 70,
+        end: 100,
+        xAxisIndex: [0, 1]
       }],
       series: [{
         name: 'Candlestick',

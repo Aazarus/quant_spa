@@ -28,7 +28,6 @@ export class AreaChartComponent implements OnInit {
     this.simple = this.getSimple();
     this.multiple = this.getMultiple();
     this.stack = this.getStack();
-    console.log("🚀 ~ file: area-chart.component.ts:33 ~ AreaChartComponent ~ ngOnInit ~ this.chart:", this.chart)
   }
 
   private getData(): void {

@@ -14,17 +14,15 @@ export class SignalrService {
   constructor() {
     const url = environment.baseUrl;
     this.connection = new signalR.HubConnectionBuilder().withUrl(`${url}stockDataHub`).build();
-    console.log("🚀 ~ file: signalr.service.ts:17 ~ SignalrService ~ constructor ~ this.connection:", this.connection)
     this.connection.start();
     this.connection.on("Connected", (id: string) => {
       this.connectionId = id;
-      console.log("🚀 ~ file: signalr.service.ts:21 ~ SignalrService ~ this.connection.on ~ this.connectionId:", this.connectionId)
     });
   }
 
-  public startStream(ticker: string, start: string, end: string, interval: number): IStreamResult<any> {
+  public async startStream(ticker: string, start: string, end: string, interval: number): Promise<IStreamResult<any>> {
     if (this.connection.state === signalR.HubConnectionState.Disconnected) {
-      this.connection.start();
+      await this.connection.start();
     }
 
     return this.connection.stream("SendStock", ticker, start, end, interval);
