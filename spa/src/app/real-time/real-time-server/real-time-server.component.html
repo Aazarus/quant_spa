@@ -1,0 +1,81 @@
+<app-header [title]="title"></app-header>
+
+<ion-content [fullscreen]="true">
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+
+          <div class="ion-text-center">
+            <h3 style="margin: 25px">
+              Get Realtime Stock Chart Data
+            </h3>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <form>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <mat-form-field>
+                    <input matInput placeholder="Ticker" [(ngModel)]="ticker" name="ticker">
+                  </mat-form-field>
+                </ion-col>
+
+                <ion-col class="ion-text-center">
+                  <mat-form-field>
+                    <input matInput placeholder="Interval" [(ngModel)]="interval" name="interval">
+                  </mat-form-field>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col class="ion-text-center">
+                  <app-date-picker [label]="startDateLabel" (selected)="startDateSelected($event)"></app-date-picker>
+                </ion-col>
+
+                <ion-col class="ion-text-center" >
+                  <app-date-picker [label]="endDateLabel" (selected)="endDateSelected($event)"></app-date-picker>
+                </ion-col>
+              </ion-row>
+
+            <ion-row class="ion-text-center">
+              <ion-col>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    class="right-align stock-button"
+                    (click)="stopChart()"
+                    [disabled]="!currentlyStreaming"
+                    style="margin: 2px;"
+                  >
+                    Stop Chart
+                  </button>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    class="right-align stock-button"
+                    (click)="getChart()"
+                    [disabled]="isStartButtonInvalid"
+                    style="margin: 2px;"
+                  >
+                    Start Chart
+                  </button>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+  <div *ngIf="!!options" style="margin-top: 20px;">
+    <p> {{ticker}}: Real time data every {{interval}}ms</p>
+    <div echarts [options]="options" [merge]="updateOptions" class="demo-chart"></div>
+  </div>
+</ion-content>

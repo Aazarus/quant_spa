@@ -68,6 +68,12 @@ export class AppComponent {
         { title: 'Stock Charts', url: '/charts/chart-stock' },
         { title: 'Realtime Stock Charts', url: '/charts/realtime-stock' }
       ]
+    },
+    {
+      title: 'Real Time',
+      children: [
+        { title: 'Real Time Server', url: '/real-time/real-time-server' },
+      ]
     }
   ];
 
