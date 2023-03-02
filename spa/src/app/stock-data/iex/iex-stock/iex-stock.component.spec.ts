@@ -43,7 +43,7 @@ describe('IexStockComponent', () => {
       expect(component['_marketData']).toEqual(IexStockTestData);
 
       // Act
-      var actual = component.stock;
+      const actual = component.stock;
 
       // Assert
       expect(actual).toEqual(IexStockTestData);

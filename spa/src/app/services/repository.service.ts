@@ -127,7 +127,7 @@ export class RepositoryService implements OnDestroy {
   }
 
   public getStockAndPriceWithTicker(ticker: string, start: string, end: string): void {
-    this.stockAndPriceWithTickerSub = this.httpClient.get<Symbol>(this.url + `api/stocks/and-prices-with-ticker/${ticker}/${start}/${end}`)
+    this.stockAndPriceWithTickerSub = this.httpClient.get<Symbol>(`${this.url}api/stocks/and-prices-with-ticker/${ticker}/${start}/${end}`)
       .subscribe(
         result => this._stockWithTicker = result,
         error => console.log("Received an error", error));
@@ -203,6 +203,6 @@ export class RepositoryService implements OnDestroy {
   }
 
   public addStockPriceWithResult(stockData: MarketData[]): Observable<Object> {
-    return this.httpClient.post<MarketData[]>(`${this.url}api/add-stock-price`, stockData);
+    return this.httpClient.post<MarketData[]>(`${this.url}api/stocks/add-stock-price`, stockData);
   }
 }

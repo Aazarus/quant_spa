@@ -12,8 +12,8 @@ describe('StockPriceComponent', () => {
   let repoServiceSpy: jasmine.SpyObj<RepositoryService>;
 
   beforeEach(waitForAsync(() => {
-    const repoServiceSpyObj = jasmine.createSpyObj<RepositoryService>('RepositoryService', 
-        ['getStockAndPrice', 'getStockAndPriceWithTicker'], 
+    const repoServiceSpyObj = jasmine.createSpyObj<RepositoryService>('RepositoryService',
+        ['getStockAndPrice', 'getStockAndPriceWithTicker'],
         {
           'stock': symbolAndPriceTestData[0],
           'stockWithTicker': symbolAndPriceTestData[1]
@@ -48,7 +48,7 @@ describe('StockPriceComponent', () => {
     it("should return repoService stock value if getWithTicker is false", () => {
       // Arrange
       // Act
-      var actual = component.stock;
+      const actual = component.stock;
 
       // Assert
       expect(actual).toBe(symbolAndPriceTestData[0])
@@ -62,7 +62,7 @@ describe('StockPriceComponent', () => {
       component.onTabChanged(event);
 
       // Act
-      var actual = component.stock;
+      const actual = component.stock;
 
       // Assert
       expect(actual).toBe(symbolAndPriceTestData[1])

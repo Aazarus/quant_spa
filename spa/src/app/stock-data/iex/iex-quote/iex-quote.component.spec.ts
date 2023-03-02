@@ -40,7 +40,7 @@ describe('IexQuoteComponent', () => {
 
       // Arrange
       // Act
-      var actual = component.data;
+      const actual = component.data;
 
       // Assert
       expect(actual).toBeNull();
@@ -52,7 +52,7 @@ describe('IexQuoteComponent', () => {
       expect(component.data).toBeNull();
       component['_data'] = IexQuoteTestData;
       // Act
-      var actual = component.data;
+      const actual = component.data;
 
       // Assert
       expect(actual).toBe(IexQuoteTestData);

@@ -4,21 +4,21 @@ import { Price } from 'src/app/models/price';
 import { MarketData } from 'src/app/models/market-data';
 import { MarketQuote } from 'src/app/models/market-quote';
 
-export var symbolTestData: Symbol[] = [
+export const symbolTestData: Symbol[] = [
     { ticker: "IBM", region: "US", sector: "Information Technology", symbolId: 1 },
     { ticker: "AAPL", region: "US", sector: "Information Technology", symbolId: 2 },
     { ticker: "HMN", region: "US", sector: "Financials", symbolId: 3 },
     { ticker: "IBM", region: "US", sector: "Financials", symbolId: 4 },
 ];
 
-export var symbolPutTestData: Symbol[] = [
+export const symbolPutTestData: Symbol[] = [
     { ticker: "IBM", region: "US", sector: "Information Technology", symbolId: 1 },
     { ticker: "AAPL", region: "US", sector: "Information Technology", symbolId: 2 },
     { ticker: "HMN", region: "US", sector: "Information Technology", symbolId: 3 },
     { ticker: "IBM", region: "US", sector: "Financials", symbolId: 4 },
 ];
 
-export var priceTestData: Price[] = [
+export const priceTestData: Price[] = [
     {
         priceId: 1,
         symbolId: 1,
@@ -54,24 +54,24 @@ export var priceTestData: Price[] = [
     },
 ];
 
-export var symbolAndPriceTestData: Symbol[] =[
+export const symbolAndPriceTestData: Symbol[] =[
 {
-    ticker: symbolTestData[0].ticker, 
-    region: symbolTestData[0].region, 
-    sector: symbolTestData[0].sector, 
-    symbolId: symbolTestData[0].symbolId, 
+    ticker: symbolTestData[0].ticker,
+    region: symbolTestData[0].region,
+    sector: symbolTestData[0].sector,
+    symbolId: symbolTestData[0].symbolId,
     prices: priceTestData
 },
 {
-    ticker: symbolTestData[1].ticker, 
-    region: symbolTestData[1].region, 
-    sector: symbolTestData[1].sector, 
-    symbolId: symbolTestData[1].symbolId, 
+    ticker: symbolTestData[1].ticker,
+    region: symbolTestData[1].region,
+    sector: symbolTestData[1].sector,
+    symbolId: symbolTestData[1].symbolId,
     prices: priceTestData
 },
 ];
 
-export var indexDataTestData: IndexData[] = [
+export const indexDataTestData: IndexData[] = [
     {
         id: 1,
         date: new Date('09/03/2008'),
@@ -106,7 +106,7 @@ export var indexDataTestData: IndexData[] = [
     },
 ];
 
-export var yahooStockTestData: MarketData[] = [    
+export const yahooStockTestData: MarketData[] = [
     {
         ticker: "IBM",
         date: getDate(-365),
@@ -149,9 +149,9 @@ export var yahooStockTestData: MarketData[] = [
     }
 ];
 
-export var IexStockTestData = yahooStockTestData;
+export const IexStockTestData = yahooStockTestData;
 
-export var IexQuoteTestData: MarketQuote = {
+export const IexQuoteTestData: MarketQuote = {
     ticker: "IBM",
     open: 140.78,
     openTime: new Date(1657546201086),
@@ -180,7 +180,7 @@ export var IexQuoteTestData: MarketQuote = {
     ytdChange: 0.0802814805155791
 };
 
-export var AvStockTestData: MarketData[] = [    
+export const AvStockTestData: MarketData[] = [
     {
         ticker: "IBM",
         date: getDate(-365),
@@ -224,7 +224,7 @@ export var AvStockTestData: MarketData[] = [
 ];
 
 function getDate(addDays: number) {
-    var date = new Date();
+    const date = new Date();
     date.setDate(date.getDate() + addDays);
 
     return date;

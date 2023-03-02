@@ -47,7 +47,7 @@
       </ion-row>
 
       <div>
-        <button mat-raised-button color="primary" class="right-align stock-button" (click)="getStockAndPrice()">Get
+        <button mat-raised-button color="primary" class="right-align stock-button" [disabled]="isButtonDisabled" (click)="getStock()">Get
           Stock Details</button>
       </div>
     </ion-grid>

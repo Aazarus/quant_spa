@@ -27,12 +27,17 @@ export class StockPriceComponent {
 
   constructor(private repoService: RepositoryService) { }
 
-
   public get stock(): Symbol {
     if (this.getWithTicker)
       return this.repoService.stockWithTicker;
-    
+
     return this.repoService.stock;
+  }
+
+  public get isButtonDisabled(): boolean {
+    return (!this.ticker && !this.stockId) ||
+    !this.startDate ||
+    !this.endDate;
   }
 
   public getStock(): void {
@@ -53,13 +58,12 @@ export class StockPriceComponent {
 
   public onTabChanged(event: any): void {
     this.getWithTicker = event.index;
-    this.getStock();
   }
 
   public startDateSelected(event: string): void {
     this.startDate = event
   }
-  
+
   public endDateSelected(event: string): void {
     this.endDate = event
   }

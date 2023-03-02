@@ -40,7 +40,7 @@ describe('AllStocksComponent', () => {
       repoServiceSpy['_stocks'] = symbolTestData;
 
       // Act
-      var actual = component.stocks;
+      const actual = component.stocks;
 
       // Assert
       expect(actual).toEqual(symbolTestData);

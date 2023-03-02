@@ -16,7 +16,7 @@ export class DatePickerComponent {
   constructor() { }
 
   public dateSelected(event: MatDatepickerInputEvent<Moment>): void {
-    var date = moment(event.value).format("YYYY-MM-DD");
+    let date = moment(event.value).format("YYYY-MM-DD");
     if (date.toLocaleLowerCase().includes("invalid")){
       date = "";
     }

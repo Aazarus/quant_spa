@@ -14,7 +14,7 @@ describe('MarketDataService', () => {
   beforeEach(() => {
     const httpClientSpyObj = jasmine.createSpyObj('HttpClient', ['get']);
     TestBed.configureTestingModule({
-      imports:[        
+      imports:[
         HttpClientTestingModule
       ],
       providers: [
@@ -36,7 +36,7 @@ describe('MarketDataService', () => {
       const expected = service['_yahooStock'];
 
       // Act
-      var actual = service.yahooStock;
+      const actual = service.yahooStock;
 
       // Assert
       expect(actual).toEqual(expected);
@@ -49,7 +49,7 @@ describe('MarketDataService', () => {
       const expected = service['_iexStock'];
 
       // Act
-      var actual = service.iexStock;
+      const actual = service.iexStock;
 
       // Assert
       expect(actual).toEqual(expected);
@@ -69,7 +69,7 @@ describe('MarketDataService', () => {
       expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/YahooStock/IBM/2010-01-01/2020-01-01/daily");
       expect(service.yahooStock).toEqual(yahooStockTestData);
     });
-    
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -85,7 +85,7 @@ describe('MarketDataService', () => {
     });
   });
 
-  describe('getYahooStockWithResult', () => {    
+  describe('getYahooStockWithResult', () => {
 
     it('should call http get with the expected url', () => {
 
@@ -113,7 +113,7 @@ describe('MarketDataService', () => {
       expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/IexStock/IBM/1");
       expect(service.iexStock).toEqual(IexStockTestData);
     });
-    
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -128,8 +128,8 @@ describe('MarketDataService', () => {
       expect(console.log).toHaveBeenCalled();
     });
   });
-  
-  describe('getIexStockWithResult', () => {    
+
+  describe('getIexStockWithResult', () => {
 
     it('should call http get with the expected url', () => {
 
@@ -145,7 +145,7 @@ describe('MarketDataService', () => {
       expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/IexStock/IBM/oneMonth");
     });
   });
-  
+
   describe('getIexQuote', () => {
     it('should set IexQupte with the result of the call', () => {
 
@@ -159,7 +159,7 @@ describe('MarketDataService', () => {
       expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/IexQuote/IBM");
       expect(service.iexQuote).toEqual(IexQuoteTestData);
     });
-    
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -174,8 +174,8 @@ describe('MarketDataService', () => {
       expect(console.log).toHaveBeenCalled();
     });
   });
-  
-  describe('getIexQuoteWithResult', () => {    
+
+  describe('getIexQuoteWithResult', () => {
 
     it('should call http get with the expected url', () => {
 
@@ -190,7 +190,7 @@ describe('MarketDataService', () => {
       expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/IexQuote/IBM");
     });
   });
-  
+
   describe('getAvStock', () => {
     it('should set avQuote with the result of the call', () => {
 
@@ -204,7 +204,7 @@ describe('MarketDataService', () => {
       expect(httpClientSpy.get).toHaveBeenCalledWith("https://localhost:7108/api/AvEOD/IBM/2022-01-01/2022-08-01/weekly");
       expect(service.avStock).toEqual(AvStockTestData);
     });
-    
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -219,8 +219,8 @@ describe('MarketDataService', () => {
       expect(console.log).toHaveBeenCalled();
     });
   });
-  
-  describe('getIexQuoteWithResult', () => {    
+
+  describe('getIexQuoteWithResult', () => {
 
     it('should call http get with the expected url', () => {
 

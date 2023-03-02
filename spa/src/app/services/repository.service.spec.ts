@@ -135,7 +135,7 @@ describe('RepositoryService', () => {
       expect(service['stockWithTicker']).not.toBeNull();
       expect(service['stockWithTicker']).toEqual(symbolTestData[0] as Symbol);
     });
-    
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -165,7 +165,7 @@ describe('RepositoryService', () => {
       expect(service['stockWithTicker']).not.toBeNull();
       expect(service['stockWithTicker']).toEqual(symbolAndPriceTestData[0] as Symbol);
     });
-    
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -197,7 +197,7 @@ describe('RepositoryService', () => {
       expect(service['stock']).not.toBeNull();
       expect(service['stock']).toEqual(symbolAndPriceTestData[0] as Symbol);
     });
-    
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -227,7 +227,7 @@ describe('RepositoryService', () => {
       expect(service['indexData']).not.toBeNull();
       expect(service['indexData']).toEqual(indexDataTestData as IndexData[]);
     });
-    
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -242,7 +242,7 @@ describe('RepositoryService', () => {
       expect(console.log).toHaveBeenCalled();
     });
   });
-  
+
   describe("getIndexDataPeriod", () => {
     it ("should get the collection of Index Data and set locally", () => {
       // Arrange
@@ -258,7 +258,7 @@ describe('RepositoryService', () => {
       expect(service['indexData']).not.toBeNull();
       expect(service['indexData']).toEqual(expected);
     });
-    
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -289,16 +289,16 @@ describe('RepositoryService', () => {
       spyOn(httpClientSpy, 'post').and.returnValue(of(newId));
 
       // Act
-      var result = service.createStock(stock);
+      const result = service.createStock(stock);
 
       // Assert
       expect(httpClientSpy.post).toHaveBeenCalled();
       expect(result).toEqual(stock);
       stock.symbolId = newId;
       const newStock = service['stocks'][service['stocks'].length-1];
-      expect(newStock).toEqual(stock);  
-    }); 
-    
+      expect(newStock).toEqual(stock);
+    });
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -336,7 +336,7 @@ describe('RepositoryService', () => {
       expect(httpClientSpy.put).toHaveBeenCalled();
       expect(service['getStocks']).toHaveBeenCalled();
     });
-    
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -356,7 +356,7 @@ describe('RepositoryService', () => {
       expect(console.log).toHaveBeenCalled();
     });
   });
-  
+
   describe('updateStockWithResult', () => {
 
     it('should call http put with the expected url', () => {
@@ -387,7 +387,7 @@ describe('RepositoryService', () => {
       expect(httpClientSpy.delete).toHaveBeenCalled();
       expect(service.getStocks).toHaveBeenCalled();
     });
-    
+
     // This can be improved to log the error to a third party service for monitoring
     it('should console.log error', () => {
       // Arrange
@@ -403,7 +403,7 @@ describe('RepositoryService', () => {
       expect(console.log).toHaveBeenCalled();
     });
   });
-  
+
   describe('deleteStockWithResult', () => {
 
     it('should call http get with the expected url', () => {
@@ -430,7 +430,7 @@ describe('RepositoryService', () => {
       service.addStockPriceWithResult(data);
 
       // Assert
-      expect(httpClientSpy.post).toHaveBeenCalledWith('https://localhost:7108/api/add-stock-price', data);
+      expect(httpClientSpy.post).toHaveBeenCalledWith('https://localhost:7108/api/stocks/add-stock-price', data);
     });
   })
 });

@@ -35,10 +35,10 @@ export class CandleVolumeComponent implements OnInit {
   }
 
   private getOptions(): EChartsOption {
-    var downColor = '#ec0000';
-    var downBorderColor = '#8A0000';
-    var upColor = '#00da3c';
-    var upBorderColor = '#008F28';
+    const downColor = '#ec0000';
+    const downBorderColor = '#8A0000';
+    const upColor = '#00da3c';
+    const upBorderColor = '#008F28';
 
     return {
       title: {
